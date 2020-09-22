@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PracticeRecord.Views.PracticeRecordPage"
+             xmlns:vm="clr-namespace:PracticeRecord.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:PracticeRecordViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button" x:Key="ActionButton">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="HeightRequest" Value="22" />
+                <Setter Property="WidthRequest" Value="56" />
+                <Setter Property="Padding" Value="0" />
+            </Style>
+            <Style TargetType="BoxView">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="HeightRequest" Value="26" />
+                <Setter Property="WidthRequest" Value="26" />
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Color" Value="WhiteSmoke" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid Margin="10,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Text="Date:" />
+            <DatePicker Grid.Row="0" Grid.Column="1" Margin="5,0,20,0" Format="dd-MMM-yyyy" Date="{Binding CurrentDate}" />
+            <StackLayout Grid.Column="2" Grid.Row="0" Margin="10,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                <Label Text="Done:" HorizontalOptions="End" VerticalOptions="Center" />
+                <Switch HorizontalOptions="End" VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout Grid.ColumnSpan="3" Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                <Label Text="Period Started:" HorizontalOptions="Start"/>
+                <Label Text="{Binding PeriodStartDate, StringFormat='{0:dd-MMM-yyyy}'}" />
+                <!--, StringFormat='{dd-MMM-yyyy}'-->
+            </StackLayout>
+        </Grid>
+        <!--<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Grid.Row="1">
+            <Button Text="Done" Style="{StaticResource ActionButton}" />
+            <Button Text="Undo" Style="{StaticResource ActionButton}" />
+        </StackLayout>-->
+        <ScrollView Grid.Row="2">
+            <Grid HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="26" />
+                    <RowDefinition Height="26" />
+                    <RowDefinition Height="26" />
+                    <RowDefinition Height="26" />
+                    <RowDefinition Height="26" />
+                    <RowDefinition Height="26" />
+                    <RowDefinition Height="26" />
+                    <RowDefinition Height="26" />
+                    <RowDefinition Height="26" />
+                    <RowDefinition Height="26" />
+                    <RowDefinition Height="26" />
+                    <RowDefinition Height="26" />
+                    <RowDefinition Height="26" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90" />
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="26" />
+                    <ColumnDefinition Width="26" />
+                    <ColumnDefinition Width="26" />
+                    <ColumnDefinition Width="26" />
+                    <ColumnDefinition Width="26" />
+                    <ColumnDefinition Width="26" />
+                    <ColumnDefinition Width="26" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" VerticalOptions="Center" Grid.Row="1">Week 1</Label>
+                <Label Grid.Column="0" VerticalOptions="Center" Grid.Row="2">Week 2</Label>
+                <Label Grid.Column="0" VerticalOptions="Center" Grid.Row="3">Week 3</Label>
+                <Label Grid.Column="0" VerticalOptions="Center" Grid.Row="4">Week 4</Label>
+                <Label Grid.Column="0" VerticalOptions="Center" Grid.Row="5">Week 5</Label>
+                <Label Grid.Column="0" VerticalOptions="Center" Grid.Row="6">Week 6</Label>
+                <Label Grid.Column="0" VerticalOptions="Center" Grid.Row="7">Week 7</Label>
+                <Label Grid.Column="0" VerticalOptions="Center" Grid.Row="8">Week 8</Label>
+                <Label Grid.Column="0" VerticalOptions="Center" Grid.Row="9">Week 9</Label>
+                <Label Grid.Column="0" VerticalOptions="Center" Grid.Row="10">Week 10</Label>
+                <Label Grid.Column="0" VerticalOptions="Center" Grid.Row="11">Week 11</Label>
+                <Label Grid.Column="0" VerticalOptions="Center" Grid.Row="12">Week 12</Label>
+                <Label Grid.Column="1" VerticalOptions="Center" Grid.Row="1">C</Label>
+                <Label Grid.Column="1" VerticalOptions="Center" Grid.Row="2">G</Label>
+                <Label Grid.Column="1" VerticalOptions="Center" Grid.Row="3">D</Label>
+                <Label Grid.Column="1" VerticalOptions="Center" Grid.Row="4">A</Label>
+                <Label Grid.Column="1" VerticalOptions="Center" Grid.Row="5">E</Label>
+                <Label Grid.Column="1" VerticalOptions="Center" Grid.Row="6">B</Label>
+                <Label Grid.Column="1" VerticalOptions="Center" Grid.Row="7">F#</Label>
+                <Label Grid.Column="1" VerticalOptions="Center" Grid.Row="8">C#</Label>
+                <Label Grid.Column="1" VerticalOptions="Center" Grid.Row="9">Ab</Label>
+                <Label Grid.Column="1" VerticalOptions="Center" Grid.Row="10">Eb</Label>
+                <Label Grid.Column="1" VerticalOptions="Center" Grid.Row="11">Bb</Label>
+                <Label Grid.Column="1" VerticalOptions="Center" Grid.Row="12">F</Label>
+                <Label Grid.Column="2" Grid.Row="0" HorizontalOptions="Center">M</Label>
+                <Label Grid.Column="3" Grid.Row="0" HorizontalOptions="Center">T</Label>
+                <Label Grid.Column="4" Grid.Row="0" HorizontalOptions="Center">W</Label>
+                <Label Grid.Column="5" Grid.Row="0" HorizontalOptions="Center">T</Label>
+                <Label Grid.Column="6" Grid.Row="0" HorizontalOptions="Center">F</Label>
+                <Label Grid.Column="7" Grid.Row="0" HorizontalOptions="Center">S</Label>
+                <Label Grid.Column="8" Grid.Row="0" HorizontalOptions="Center">S</Label>
+                <BoxView Grid.Row="1" Grid.Column="2" />
+                <BoxView Grid.Row="2" Grid.Column="2" />
+                <BoxView Grid.Row="3" Grid.Column="2" />
+                <BoxView Grid.Row="4" Grid.Column="2" />
+                <BoxView Grid.Row="5" Grid.Column="2" />
+                <BoxView Grid.Row="6" Grid.Column="2" />
+                <BoxView Grid.Row="7" Grid.Column="2" />
+                <BoxView Grid.Row="8" Grid.Column="2" />
+                <BoxView Grid.Row="9" Grid.Column="2" />
+                <BoxView Grid.Row="10" Grid.Column="2" />
+                <BoxView Grid.Row="11" Grid.Column="2" />
+                <BoxView Grid.Row="12" Grid.Column="2" />
+                <BoxView Grid.Row="1" Grid.Column="3" />
+                <BoxView Grid.Row="2" Grid.Column="3" />
+                <BoxView Grid.Row="3" Grid.Column="3" />
+                <BoxView Grid.Row="4" Grid.Column="3" />
+                <BoxView Grid.Row="5" Grid.Column="3" />
+                <BoxView Grid.Row="6" Grid.Column="3" />
+                <BoxView Grid.Row="7" Grid.Column="3" />
+                <BoxView Grid.Row="8" Grid.Column="3" />
+                <BoxView Grid.Row="9" Grid.Column="3" />
+                <BoxView Grid.Row="10" Grid.Column="3" />
+                <BoxView Grid.Row="11" Grid.Column="3" />
+                <BoxView Grid.Row="12" Grid.Column="3" />
+                <BoxView Grid.Row="1" Grid.Column="4" />
+                <BoxView Grid.Row="2" Grid.Column="4" />
+                <BoxView Grid.Row="3" Grid.Column="4" />
+                <BoxView Grid.Row="4" Grid.Column="4" />
+                <BoxView Grid.Row="5" Grid.Column="4" />
+                <BoxView Grid.Row="6" Grid.Column="4" />
+                <BoxView Grid.Row="7" Grid.Column="4" />
+                <BoxView Grid.Row="8" Grid.Column="4" />
+                <BoxView Grid.Row="9" Grid.Column="4" />
+                <BoxView Grid.Row="10" Grid.Column="4" />
+                <BoxView Grid.Row="11" Grid.Column="4" />
+                <BoxView Grid.Row="12" Grid.Column="4" />
+                <BoxView Grid.Row="1" Grid.Column="5" />
+                <BoxView Grid.Row="2" Grid.Column="5" />
+                <BoxView Grid.Row="3" Grid.Column="5" />
+                <BoxView Grid.Row="4" Grid.Column="5" />
+                <BoxView Grid.Row="5" Grid.Column="5" />
+                <BoxView Grid.Row="6" Grid.Column="5" />
+                <BoxView Grid.Row="7" Grid.Column="5" />
+                <BoxView Grid.Row="8" Grid.Column="5" />
+                <BoxView Grid.Row="9" Grid.Column="5" />
+                <BoxView Grid.Row="10" Grid.Column="5" />
+                <BoxView Grid.Row="11" Grid.Column="5" />
+                <BoxView Grid.Row="12" Grid.Column="5" />
+                <BoxView Grid.Row="1" Grid.Column="6" />
+                <BoxView Grid.Row="2" Grid.Column="6" />
+                <BoxView Grid.Row="3" Grid.Column="6" />
+                <BoxView Grid.Row="4" Grid.Column="6" />
+                <BoxView Grid.Row="5" Grid.Column="6" />
+                <BoxView Grid.Row="6" Grid.Column="6" />
+                <BoxView Grid.Row="7" Grid.Column="6" />
+                <BoxView Grid.Row="8" Grid.Column="6" />
+                <BoxView Grid.Row="9" Grid.Column="6" />
+                <BoxView Grid.Row="10" Grid.Column="6" />
+                <BoxView Grid.Row="11" Grid.Column="6" />
+                <BoxView Grid.Row="12" Grid.Column="6" />
+                <BoxView Grid.Row="1" Grid.Column="7" />
+                <BoxView Grid.Row="2" Grid.Column="7" />
+                <BoxView Grid.Row="3" Grid.Column="7" />
+                <BoxView Grid.Row="4" Grid.Column="7" />
+                <BoxView Grid.Row="5" Grid.Column="7" />
+                <BoxView Grid.Row="6" Grid.Column="7" />
+                <BoxView Grid.Row="7" Grid.Column="7" />
+                <BoxView Grid.Row="8" Grid.Column="7" />
+                <BoxView Grid.Row="9" Grid.Column="7" />
+                <BoxView Grid.Row="10" Grid.Column="7" />
+                <BoxView Grid.Row="11" Grid.Column="7" />
+                <BoxView Grid.Row="12" Grid.Column="7" />
+                <BoxView Grid.Row="1" Grid.Column="8" />
+                <BoxView Grid.Row="2" Grid.Column="8" />
+                <BoxView Grid.Row="3" Grid.Column="8" />
+                <BoxView Grid.Row="4" Grid.Column="8" />
+                <BoxView Grid.Row="5" Grid.Column="8" />
+                <BoxView Grid.Row="6" Grid.Column="8" />
+                <BoxView Grid.Row="7" Grid.Column="8" />
+                <BoxView Grid.Row="8" Grid.Column="8" />
+                <BoxView Grid.Row="9" Grid.Column="8" />
+                <BoxView Grid.Row="10" Grid.Column="8" />
+                <BoxView Grid.Row="11" Grid.Column="8" />
+                <BoxView Grid.Row="12" Grid.Column="8" />
+            </Grid>
+
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

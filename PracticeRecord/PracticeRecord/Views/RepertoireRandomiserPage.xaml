@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PracticeRecord.Views.RepertoireRandomiserPage"
+             xmlns:vm="clr-namespace:PracticeRecord.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:RepertoireRandomiserViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <Grid Margin="10,70">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label
+            FontSize="18"
+            HorizontalTextAlignment="Center"
+            Text="Today's Random Piece to Learn is:"
+            VerticalTextAlignment="Center" />
+            <Label
+            Grid.Row="1"
+            FontSize="22"
+            HorizontalTextAlignment="Center"
+            Text="{Binding SelectedLearnPiece, FallbackValue='Selected Learn Piece'}"
+            TextColor="Blue"
+            VerticalTextAlignment="Start"/>
+            <Label
+            Grid.Row="2"
+            FontSize="18"
+            HorizontalTextAlignment="Center"
+            Text="Today's Random Piece to Practice is:"
+            VerticalTextAlignment="Center" />
+            <Label
+            Grid.Row="3"
+            FontSize="22"
+            HorizontalTextAlignment="Center"
+            Text="{Binding SelectedPracticePiece, FallbackValue='Selected Practice Piece'}"
+            TextColor="Blue"
+            VerticalTextAlignment="Start" />
+
+            <Grid Grid.Row="4" HorizontalOptions="Center">
+                <Grid.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Margin" Value="6" />
+                        <Setter Property="Padding" Value="14" />
+                        <Setter Property="BackgroundColor" Value="LightGray" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button
+                Command="{Binding RefreshLearnPieceCommand}"
+                FontSize="16"
+                HorizontalOptions="Start"
+                Text="Learn Piece"
+                VerticalOptions="Center" />
+                <Button
+                Grid.Column="1"
+                Command="{Binding RefreshPracticePieceCommand}"
+                FontSize="16"
+                HorizontalOptions="End"
+                Text="Practice Piece"
+                VerticalOptions="Center" />
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>
