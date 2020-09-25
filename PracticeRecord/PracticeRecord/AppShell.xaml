@@ -30,8 +30,8 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="Practice Record" Icon="tab_feed.png" Route="PracticeRecordPage" ContentTemplate="{DataTemplate local:PracticeRecordPage}" />
-        <ShellContent Title="Repertoire Randomiser" Icon="tab_about.png" ContentTemplate="{DataTemplate local:RepertoireRandomiserPage}" />
+        <ShellContent Title="Practice Record" Icon="tab_record.png" Route="PracticeRecordPage" ContentTemplate="{DataTemplate local:PracticeRecordPage}" />
+        <ShellContent Title="Repertoire Randomiser" Icon="tab_practice.png" ContentTemplate="{DataTemplate local:RepertoireRandomiserPage}" />
     </TabBar>
 
     <!--

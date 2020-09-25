@@ -12,7 +12,7 @@ namespace PracticeRecord.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<PracticeItem> DataStore => DependencyService.Get<IDataStore<PracticeItem>>();
 
         bool isBusy = false;
         public bool IsBusy

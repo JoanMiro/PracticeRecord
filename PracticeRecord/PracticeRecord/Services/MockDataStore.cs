@@ -6,53 +6,53 @@ using PracticeRecord.Models;
 
 namespace PracticeRecord.Services
 {
-    public class MockDataStore : IDataStore<Item>
+    public class MockDataStore : IDataStore<PracticeItem>
     {
-        readonly List<Item> items;
+        readonly List<PracticeItem> items;
 
         public MockDataStore()
         {
-            this.items = new List<Item>()
+            this.items = new List<PracticeItem>()
             {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }
+                new PracticeItem { CycleStartDate = new DateTime(2020,9,22) },
+                new PracticeItem { CycleStartDate = new DateTime(2020,9,22) },
+                new PracticeItem { CycleStartDate = new DateTime(2020,9,22) },
+                new PracticeItem { CycleStartDate = new DateTime(2020,9,22) },
+                new PracticeItem { CycleStartDate = new DateTime(2020,9,22) },
+                new PracticeItem { CycleStartDate = new DateTime(2020,9,22) }
             };
         }
 
-        public async Task<bool> AddItemAsync(Item item)
+        public async Task<int> AddItemAsync(PracticeItem practiceItem)
         {
-            this.items.Add(item);
+            this.items.Add(practiceItem);
 
-            return await Task.FromResult(true);
+            return await Task.FromResult(0);
         }
 
-        public async Task<bool> UpdateItemAsync(Item item)
+        public async Task<int> UpdateItemAsync(PracticeItem practiceItem)
         {
-            var oldItem = this.items.Where((Item arg) => arg.Id == item.Id).FirstOrDefault();
+            var oldItem = this.items.FirstOrDefault(arg => arg.CycleStartDate == practiceItem.CycleStartDate);
             this.items.Remove(oldItem);
-            this.items.Add(item);
+            this.items.Add(practiceItem);
 
-            return await Task.FromResult(true);
+            return await Task.FromResult(0);
         }
 
-        public async Task<bool> DeleteItemAsync(string id)
+        public async Task<int> DeleteItemAsync(int id)
         {
-            var oldItem = this.items.Where((Item arg) => arg.Id == id).FirstOrDefault();
+            var oldItem = this.items.FirstOrDefault(arg => arg.Id == id);
             this.items.Remove(oldItem);
 
-            return await Task.FromResult(true);
+            return await Task.FromResult(0);
         }
 
-        public async Task<Item> GetItemAsync(string id)
+        public async Task<PracticeItem> GetItemAsync(int id)
         {
             return await Task.FromResult(this.items.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<PracticeItem>> GetItemsAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(this.items);
         }
