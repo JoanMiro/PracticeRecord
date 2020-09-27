@@ -122,101 +122,90 @@
                 <Label Grid.Column="7" Grid.Row="0" HorizontalOptions="Center">S</Label>
                 <Label Grid.Column="8" Grid.Row="0" HorizontalOptions="Center">S</Label>
 
-                <BoxView Grid.Row="1" Grid.Column="2" />
-                <BoxView Grid.Row="1" Grid.Column="3" />
-                <BoxView Grid.Row="1" Grid.Column="4" />
-                <BoxView Grid.Row="1" Grid.Column="5" />
-                <BoxView Grid.Row="1" Grid.Column="6" />
-                <BoxView Grid.Row="1" Grid.Column="7" />
-                <BoxView Grid.Row="1" Grid.Column="8" />
-
-                <BoxView Grid.Row="2" Grid.Column="2" />
-                <BoxView Grid.Row="2" Grid.Column="3" />
-                <BoxView Grid.Row="2" Grid.Column="4" />
-                <BoxView Grid.Row="2" Grid.Column="5" />
-                <BoxView Grid.Row="2" Grid.Column="6" />
-                <BoxView Grid.Row="2" Grid.Column="7" />
-                <BoxView Grid.Row="2" Grid.Column="8" />
-                
-                <BoxView Grid.Row="3" Grid.Column="2" />
-                <BoxView Grid.Row="3" Grid.Column="3" />
-                <BoxView Grid.Row="3" Grid.Column="4" />
-                <BoxView Grid.Row="3" Grid.Column="5" />
-                <BoxView Grid.Row="3" Grid.Column="6" />
-                <BoxView Grid.Row="3" Grid.Column="7" />
-                <BoxView Grid.Row="3" Grid.Column="8" />
-
-                <BoxView Grid.Row="4" Grid.Column="2" />
-                <BoxView Grid.Row="4" Grid.Column="3" />
-                <BoxView Grid.Row="4" Grid.Column="4" />
-                <BoxView Grid.Row="4" Grid.Column="5" />
-                <BoxView Grid.Row="4" Grid.Column="6" />
-                <BoxView Grid.Row="4" Grid.Column="7" />
-                <BoxView Grid.Row="4" Grid.Column="8" />
-
-                <BoxView Grid.Row="5" Grid.Column="2" />
-                <BoxView Grid.Row="5" Grid.Column="3" />
-                <BoxView Grid.Row="5" Grid.Column="4" />
-                <BoxView Grid.Row="5" Grid.Column="5" />
-                <BoxView Grid.Row="5" Grid.Column="6" />
-                <BoxView Grid.Row="5" Grid.Column="7" />
-                <BoxView Grid.Row="5" Grid.Column="8" />
-
-                <BoxView Grid.Row="6" Grid.Column="2" />
-                <BoxView Grid.Row="6" Grid.Column="3" />
-                <BoxView Grid.Row="6" Grid.Column="4" />
-                <BoxView Grid.Row="6" Grid.Column="5" />
-                <BoxView Grid.Row="6" Grid.Column="6" />
-                <BoxView Grid.Row="6" Grid.Column="7" />
-                <BoxView Grid.Row="6" Grid.Column="8" />
-
-                <BoxView Grid.Row="7" Grid.Column="2" />
-                <BoxView Grid.Row="7" Grid.Column="3" />
-                <BoxView Grid.Row="7" Grid.Column="4" />
-                <BoxView Grid.Row="7" Grid.Column="5" />
-                <BoxView Grid.Row="7" Grid.Column="6" />
-                <BoxView Grid.Row="7" Grid.Column="7" />
-                <BoxView Grid.Row="7" Grid.Column="8" />
-
-                <BoxView Grid.Row="8" Grid.Column="2" />
-                <BoxView Grid.Row="8" Grid.Column="3" />
-                <BoxView Grid.Row="8" Grid.Column="4" />
-                <BoxView Grid.Row="8" Grid.Column="5" />
-                <BoxView Grid.Row="8" Grid.Column="6" />
-                <BoxView Grid.Row="8" Grid.Column="7" />
-                <BoxView Grid.Row="8" Grid.Column="8" />
-
-                <BoxView Grid.Row="9" Grid.Column="2" />
-                <BoxView Grid.Row="9" Grid.Column="3" />
-                <BoxView Grid.Row="9" Grid.Column="4" />
-                <BoxView Grid.Row="9" Grid.Column="5" />
-                <BoxView Grid.Row="9" Grid.Column="6" />
-                <BoxView Grid.Row="9" Grid.Column="7" />
-                <BoxView Grid.Row="9" Grid.Column="8" />
-
-                <BoxView Grid.Row="10" Grid.Column="2" />
-                <BoxView Grid.Row="10" Grid.Column="3" />
-                <BoxView Grid.Row="10" Grid.Column="4" />
-                <BoxView Grid.Row="10" Grid.Column="5" />
-                <BoxView Grid.Row="10" Grid.Column="6" />
-                <BoxView Grid.Row="10" Grid.Column="7" />
-                <BoxView Grid.Row="10" Grid.Column="8" />
-
-                <BoxView Grid.Row="11" Grid.Column="2" />
-                <BoxView Grid.Row="11" Grid.Column="3" />
-                <BoxView Grid.Row="11" Grid.Column="4" />
-                <BoxView Grid.Row="11" Grid.Column="5" />
-                <BoxView Grid.Row="11" Grid.Column="6" />
-                <BoxView Grid.Row="11" Grid.Column="7" />
-                <BoxView Grid.Row="11" Grid.Column="8" />
-
-                <BoxView Grid.Row="12" Grid.Column="2" />
-                <BoxView Grid.Row="12" Grid.Column="3" />
-                <BoxView Grid.Row="12" Grid.Column="4" />
-                <BoxView Grid.Row="12" Grid.Column="5" />
-                <BoxView Grid.Row="12" Grid.Column="6" />
-                <BoxView Grid.Row="12" Grid.Column="7" />
-                <BoxView Grid.Row="12" Grid.Column="8" />
+                <BoxView Grid.Row="1" Grid.Column="2"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="1" Grid.Column="3"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="1" Grid.Column="4"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="1" Grid.Column="5"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="1" Grid.Column="6"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="1" Grid.Column="7"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="1" Grid.Column="8"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="2" Grid.Column="2"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="2" Grid.Column="3"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="2" Grid.Column="4"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="2" Grid.Column="5"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="2" Grid.Column="6"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="2" Grid.Column="7"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="2" Grid.Column="8"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="3" Grid.Column="2"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="3" Grid.Column="3"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="3" Grid.Column="4"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="3" Grid.Column="5"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="3" Grid.Column="6"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="3" Grid.Column="7"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="3" Grid.Column="8"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="4" Grid.Column="2"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="4" Grid.Column="3"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="4" Grid.Column="4"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="4" Grid.Column="5"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="4" Grid.Column="6"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="4" Grid.Column="7"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="4" Grid.Column="8"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="5" Grid.Column="2"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="5" Grid.Column="3"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="5" Grid.Column="4"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="5" Grid.Column="5"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="5" Grid.Column="6"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="5" Grid.Column="7"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="5" Grid.Column="8"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="6" Grid.Column="2"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="6" Grid.Column="3"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="6" Grid.Column="4"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="6" Grid.Column="5"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="6" Grid.Column="6"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="6" Grid.Column="7"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="6" Grid.Column="8"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="7" Grid.Column="2"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="7" Grid.Column="3"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="7" Grid.Column="4"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="7" Grid.Column="5"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="7" Grid.Column="6"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="7" Grid.Column="7"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="7" Grid.Column="8"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="8" Grid.Column="2"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="8" Grid.Column="3"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="8" Grid.Column="4"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="8" Grid.Column="5"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="8" Grid.Column="6"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="8" Grid.Column="7"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="8" Grid.Column="8"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="9" Grid.Column="2"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="9" Grid.Column="3"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="9" Grid.Column="4"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="9" Grid.Column="5"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="9" Grid.Column="6"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="9" Grid.Column="7"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="9" Grid.Column="8"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="10" Grid.Column="2"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="10" Grid.Column="3"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="10" Grid.Column="4"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="10" Grid.Column="5"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="10" Grid.Column="6"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="10" Grid.Column="7"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="10" Grid.Column="8"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="11" Grid.Column="2"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="11" Grid.Column="3"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="11" Grid.Column="4"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="11" Grid.Column="5"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="11" Grid.Column="6"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="11" Grid.Column="7"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="11" Grid.Column="8"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="12" Grid.Column="2"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="12" Grid.Column="3"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="12" Grid.Column="4"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="12" Grid.Column="5"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="12" Grid.Column="6"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="12" Grid.Column="7"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
+                <BoxView Grid.Row="12" Grid.Column="8"><BoxView.GestureRecognizers><TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/></BoxView.GestureRecognizers></BoxView>
             </Grid>
 
         </ScrollView>

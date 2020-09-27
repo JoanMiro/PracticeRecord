@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using PracticeRecord.ViewModels;
+using System.Collections.Generic;
 using System.Linq;
-using PracticeRecord.ViewModels;
 using Xamarin.Forms;
 
 namespace PracticeRecord.Views
@@ -20,12 +20,19 @@ namespace PracticeRecord.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            this.CurrentDatePicker.MaximumDate = this.ViewModel.PeriodStartDate.AddDays(84);
+            this.CurrentDatePicker.MaximumDate = this.ViewModel.PeriodStartDate.AddDays(83);
             this.CurrentDatePicker.MinimumDate = this.ViewModel.PeriodStartDate;
+            this.CurrentDatePicker.Date = DateTime.Today.Date;
+            this.ViewModel.RecordUpdated += this.ViewModel_RecordUpdated;
 
         }
 
-        private PracticeRecordViewModel ViewModel => (PracticeRecordViewModel) this.BindingContext;
+        private void ViewModel_RecordUpdated(object sender, EventArgs e)
+        {
+            this.RefreshBoxViewState();
+        }
+
+        private PracticeRecordViewModel ViewModel => (PracticeRecordViewModel)this.BindingContext;
 
         private void InitializeGridBindings()
         {
@@ -53,6 +60,16 @@ namespace PracticeRecord.Views
         private void DatePicker_OnDateSelected(object sender, DateChangedEventArgs e)
         {
             this.DoneSwitch.IsToggled = this.ViewModel.DayIsDone;
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            var index = this.boxViews.IndexOf(sender as BoxView);
+            if (this.ViewModel.PeriodStartDate.AddDays(index) <= this.ViewModel.CurrentDate)
+            {
+                this.ViewModel.ToggleDay(index);
+            }
+
         }
     }
 }
