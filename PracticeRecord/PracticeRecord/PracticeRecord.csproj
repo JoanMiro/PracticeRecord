@@ -26,6 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\PracticeHistoryPage.xaml.cs">
+      <DependentUpon>PracticeHistoryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\RepertoireRandomiserPage.xaml.cs">
       <DependentUpon>RepertoireRandomiserPage.xaml</DependentUpon>
     </Compile>

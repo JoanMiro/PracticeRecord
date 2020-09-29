@@ -8,6 +8,9 @@ namespace PracticeRecord.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public DateTime CycleStartDate { get; set; }
+
+        public string CycleStartDateDisplay => this.CycleStartDate.ToString("dd-MMM-yyyy");
+
         public string SerializedRecord { get; set; }
     }
 }
