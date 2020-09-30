@@ -34,7 +34,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid Margin="10,0,0,0">
+    <Grid Margin="10,10,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -51,11 +51,12 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Label Grid.Row="0" Grid.Column="0" Text="Date:" />
-            <DatePicker x:Name="CurrentDatePicker" Grid.Row="0" Grid.Column="1" DateSelected="DatePicker_OnDateSelected" Margin="5,0,20,0" Format="dd-MMM-yyyy" Date="{Binding CurrentDate}" />
-            <StackLayout Grid.Column="2" Grid.Row="0" Margin="10,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+            <!--DateSelected="DatePicker_OnDateSelected" -->
+            <DatePicker x:Name="CurrentDatePicker" Grid.Row="0" Grid.Column="1" Margin="5,0,20,0" Format="dd-MMM-yyyy" Date="{Binding CurrentDate}" />
+            <!--<StackLayout Grid.Column="2" Grid.Row="0" Margin="10,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                 <Label Text="Done:" HorizontalOptions="End" VerticalOptions="Center" />
                 <Switch x:Name="DoneSwitch" HorizontalOptions="End" VerticalOptions="Center" Toggled="DoneSwitchToggled"/>
-            </StackLayout>
+            </StackLayout>-->
             <StackLayout Grid.ColumnSpan="3" Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
                 <Label Text="Period Started:" HorizontalOptions="Start"/>
                 <Label Text="{Binding PeriodStartDate, StringFormat='{0:dd-MMM-yyyy}'}" />

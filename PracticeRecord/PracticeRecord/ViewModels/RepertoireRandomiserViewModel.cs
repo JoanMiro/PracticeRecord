@@ -21,9 +21,17 @@ namespace PracticeRecord.ViewModels
 
             this.RefreshPracticePieceCommand = new Command(() =>
                 this.SelectedPracticePiece = this.pieceRandomiser.RandomPracticeSelection());
+
+            this.RefreshAllCommand = new Command(
+                () =>
+                {
+                    this.SelectedLearnPiece = this.pieceRandomiser.RandomLearnSelection();
+                    this.SelectedPracticePiece = this.pieceRandomiser.RandomPracticeSelection();
+                });
+
         }
 
-        public string SelectedPracticePiece
+    public string SelectedPracticePiece
         {
             get => this.selectedPracticePiece;
             private set => this.SetProperty(ref this.selectedPracticePiece, value);
@@ -37,5 +45,6 @@ namespace PracticeRecord.ViewModels
 
         public ICommand RefreshPracticePieceCommand { get; }
         public ICommand RefreshLearnPieceCommand { get; }
+        public ICommand RefreshAllCommand { get; }
     }
 }

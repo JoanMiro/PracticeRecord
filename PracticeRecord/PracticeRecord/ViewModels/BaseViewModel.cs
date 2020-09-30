@@ -10,19 +10,55 @@ using PracticeRecord.Services;
 
 namespace PracticeRecord.ViewModels
 {
+    using System.Diagnostics;
+    using System.Linq;
+
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDataStore<PracticeItem> DataStore => DependencyService.Get<IDataStore<PracticeItem>>();
 
-        bool isBusy = false;
-        public bool IsBusy
+        string title = string.Empty;
+        private Color done;
+        private Color notDone;
+        private Color primary;
+
+        public Color Done
         {
-            get => this.isBusy;
-            set => this.SetProperty(ref this.isBusy, value);
+            get => this.done;
+            set => this.SetProperty(ref this.done, value);
+        }
+        public Color NotDone
+        {
+            get => this.notDone;
+            set => this.SetProperty(ref this.notDone, value);
+        }
+        public Color Primary
+        {
+            get => this.primary;
+            set => this.SetProperty(ref this.primary, value);
         }
 
-        string title = string.Empty;
-
+        public BaseViewModel()
+        {
+            if (Application.Current is App app)
+            {
+                var doneResourcePair = app?.Resources.First(res => res.Key == "Done");
+                {
+                    var resourcePair = doneResourcePair.Value;
+                    this.Done = (Color)resourcePair.Value;
+                }
+                var notDoneResourcePair = app?.Resources.First(res => res.Key == "NotDone");
+                {
+                    var resourcePair = notDoneResourcePair.Value;
+                    this.NotDone = (Color)resourcePair.Value;
+                }
+                var primaryResourcePair = app?.Resources.First(res => res.Key == "Primary");
+                {
+                    var resourcePair = primaryResourcePair.Value;
+                    this.Primary = (Color)resourcePair.Value;
+                }
+            }
+        }
         public string Title
         {
             get => this.title;

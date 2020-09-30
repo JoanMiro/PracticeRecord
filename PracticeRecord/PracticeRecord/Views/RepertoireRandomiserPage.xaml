@@ -28,7 +28,7 @@
             FontSize="22"
             HorizontalTextAlignment="Center"
             Text="{Binding SelectedLearnPiece, FallbackValue='Selected Learn Piece'}"
-            TextColor="Blue"
+            TextColor="{StaticResource Done}"
             VerticalTextAlignment="Start"/>
             <Label
             Grid.Row="2"
@@ -41,7 +41,7 @@
             FontSize="22"
             HorizontalTextAlignment="Center"
             Text="{Binding SelectedPracticePiece, FallbackValue='Selected Practice Piece'}"
-            TextColor="Blue"
+            TextColor="{StaticResource Done}"
             VerticalTextAlignment="Start" />
 
             <Grid Grid.Row="4" HorizontalOptions="Center">
@@ -49,7 +49,7 @@
                     <Style TargetType="Button">
                         <Setter Property="Margin" Value="6" />
                         <Setter Property="Padding" Value="14" />
-                        <Setter Property="BackgroundColor" Value="LightGray" />
+                        <Setter Property="BackgroundColor" Value="{StaticResource ButtonText}" />
                     </Style>
                 </Grid.Resources>
                 <Grid.ColumnDefinitions>

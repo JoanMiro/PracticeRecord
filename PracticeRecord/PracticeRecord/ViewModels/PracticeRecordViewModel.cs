@@ -16,8 +16,6 @@
         private DateTime periodStartDate;
         private PracticeItem currentPeriodRecord;
 
-        public event EventHandler RecordUpdated;
-
         public PracticeRecordViewModel()
         {
             this.Title = "Practice Record";
@@ -29,7 +27,7 @@
             this.PeriodStartDate = this.currentPeriodRecord.CycleStartDate;
             for (var colorIndex = 0; colorIndex < 84; colorIndex++)
             {
-                this.DoneCollection.Add(this.currentPeriodRecord.SerializedRecord[colorIndex] == '1' ? Color.Blue : Color.WhiteSmoke);
+                this.DoneCollection.Add(this.currentPeriodRecord.SerializedRecord[colorIndex] == '1' ? this.Done : this.NotDone);
             }
 
             this.DoneSwitchToggledCommand = new Command(this.DoneSwitchToggled);
@@ -66,33 +64,28 @@
 
         public ICommand DoneSwitchToggledCommand { get; }
 
-        public bool DayIsDone => this.DoneCollection[this.DaysOffSet] == Color.Blue;
+        public bool DayIsDone => this.DoneCollection[this.DaysOffSet] == this.Done;
 
         private void DoneSwitchToggled(object toggledObject)
         {
             var toggled = (bool)toggledObject;
             var daysOffset = this.CurrentDate.DayOfYear - this.PeriodStartDate.DayOfYear;
-            this.DoneCollection[daysOffset] = toggled ? Color.Blue : Color.WhiteSmoke;
+            this.DoneCollection[daysOffset] = toggled ? this.Done : this.NotDone;
             this.UpdateDoneDatabaseRecord();
         }
 
         private void UpdateDoneDatabaseRecord()
         {
-            this.currentPeriodRecord.SerializedRecord = new string(this.DoneCollection.Select(color => color == Color.WhiteSmoke ? '0' : '1').ToArray());
+            this.currentPeriodRecord.SerializedRecord = new string(this.DoneCollection.Select(color => color == this.NotDone ? '0' : '1').ToArray());
             var success = this.PracticeDataViewModel.PracticeItemDataStore.UpdateItemAsync(this.currentPeriodRecord).Result;
         }
 
         public void ToggleDay(int index)
         {
-            var toggled = this.DoneCollection[index] == Color.WhiteSmoke;
-            this.DoneCollection[index] = toggled ? Color.Blue : Color.WhiteSmoke;
+            var toggled = this.DoneCollection[index] == this.NotDone;
+            this.DoneCollection[index] = toggled ? this.Done : this.NotDone;
             this.UpdateDoneDatabaseRecord();
-            this.OnRecordUpdated();
-        }
-
-        private void OnRecordUpdated()
-        {
-            RecordUpdated?.Invoke(this, null);
+            this.PracticeDataViewModel.OnRecordUpdated();
         }
     }
 }

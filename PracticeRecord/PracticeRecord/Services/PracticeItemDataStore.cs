@@ -19,12 +19,7 @@ namespace PracticeRecord.Services
             Debug.WriteLine(result);
             if (this.GetItemsAsync().Result.ToList().Count == 0)
             {
-                var startDate = new DateTime(2020, 9, 28);
-                Task.Run(() => this.AddItemAsync(new PracticeItem
-                {
-                    CycleStartDate = startDate,
-                    SerializedRecord = new string('0',84)
-                }));
+                this.SeedHistory();
             }
         }
 
@@ -36,7 +31,7 @@ namespace PracticeRecord.Services
                 //return await this.databaseConnection.UpdateAsync(practiceItem);
             }
 
-            return await this.databaseConnection.InsertAsync(practiceItem);
+            return this.databaseConnection.InsertAsync(practiceItem).Result;
         }
 
         public async Task<int> UpdateItemAsync(PracticeItem practiceItem)
@@ -60,8 +55,30 @@ namespace PracticeRecord.Services
 
         public async Task<IEnumerable<PracticeItem>> GetItemsAsync(bool forceRefresh = false)
         {
-            return this.databaseConnection.Table<PracticeItem>().ToListAsync().Result;
+            return this.databaseConnection.Table<PracticeItem>().OrderByDescending(rec=>rec.CycleStartDate).ToListAsync().Result;
             //return await this.databaseConnection.Table<PracticeItem>().ToListAsync();
+        }
+
+        private void SeedHistory()
+        {
+            for (var historyPeriodIndex = 0; historyPeriodIndex < 3; historyPeriodIndex++)
+            {
+                var historyStartDate = new DateTime(2020, 1, 20).AddDays(84 * historyPeriodIndex);
+                Task.Run(() => this.AddItemAsync(new PracticeItem
+                {
+                    CycleStartDate = historyStartDate,
+                    SerializedRecord = new string('1', 84)
+                }));
+            }
+
+            var startDate = new DateTime(2020, 9, 28);
+            Task.Run(() => this.AddItemAsync(new PracticeItem
+            {
+                CycleStartDate = startDate,
+                SerializedRecord = new string('0', 84)
+            }));
+
+
         }
     }
 }
