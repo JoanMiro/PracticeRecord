@@ -1,16 +1,21 @@
-﻿using System;
+﻿using PracticeRecord.Models;
+using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using PracticeRecord.Models;
-using SQLite;
 
 namespace PracticeRecord.Services
 {
+    using System.IO;
+    using Xamarin.Forms;
+    using Xamarin.Forms.PlatformConfiguration;
+
     public class PracticeItemDataStore : IDataStore<PracticeItem>
     {
         private readonly SQLiteAsyncConnection databaseConnection;
+        //private const string localFilesPath = "/storage/emulated/0/Android/data/com.openfeature.practicerecord/files";
 
         public PracticeItemDataStore(string databaseFilePath)
         {
@@ -21,6 +26,8 @@ namespace PracticeRecord.Services
             {
                 this.SeedHistory();
             }
+           
+            // this.FileDump();
         }
 
         public async Task<int> AddItemAsync(PracticeItem practiceItem)
@@ -55,7 +62,7 @@ namespace PracticeRecord.Services
 
         public async Task<IEnumerable<PracticeItem>> GetItemsAsync(bool forceRefresh = false)
         {
-            return this.databaseConnection.Table<PracticeItem>().OrderByDescending(rec=>rec.CycleStartDate).ToListAsync().Result;
+            return this.databaseConnection.Table<PracticeItem>().OrderByDescending(rec => rec.CycleStartDate).ToListAsync().Result;
             //return await this.databaseConnection.Table<PracticeItem>().ToListAsync();
         }
 
@@ -64,21 +71,48 @@ namespace PracticeRecord.Services
             for (var historyPeriodIndex = 0; historyPeriodIndex < 3; historyPeriodIndex++)
             {
                 var historyStartDate = new DateTime(2020, 1, 20).AddDays(84 * historyPeriodIndex);
-                Task.Run(() => this.AddItemAsync(new PracticeItem
-                {
-                    CycleStartDate = historyStartDate,
-                    SerializedRecord = new string('1', 84)
-                }));
+                _ = this.AddItemAsync(
+                    new PracticeItem
+                    {
+                        CycleStartDate = historyStartDate,
+                        SerializedRecord = new string('1', 84)
+                    }).Result;
             }
 
             var startDate = new DateTime(2020, 9, 28);
-            Task.Run(() => this.AddItemAsync(new PracticeItem
-            {
-                CycleStartDate = startDate,
-                SerializedRecord = new string('0', 84)
-            }));
+            _ = this.AddItemAsync(
+                new PracticeItem
+                {
+                    CycleStartDate = startDate,
+                    SerializedRecord = new string('0', 84)
+                }).Result;
 
 
         }
+
+
+        private async void FileDump()
+        {
+            try
+            {
+                var localFilesPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
+                var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                var fileList = Directory.EnumerateFiles(folderPath);
+                var enumerable = fileList as string[] ?? fileList.ToArray();
+                Debug.WriteLine(enumerable.Length);
+                var fileName = enumerable.First(x => x.Contains("PracticeRecord.db3"));
+                using var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                using var writer = File.Create(localFilesPath);
+                var bytes = new byte[fileStream.Length];
+                _ = fileStream.Read(bytes, 0, (int)fileStream.Length);
+                await writer.WriteAsync(bytes, 0, (int)fileStream.Length);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
     }
 }
