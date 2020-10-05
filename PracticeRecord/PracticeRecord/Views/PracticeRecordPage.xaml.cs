@@ -10,6 +10,7 @@ namespace PracticeRecord.Views
     public partial class PracticeRecordPage : ContentPage
     {
         private List<BoxView> boxViews;
+        private List<Label> labels;
 
         public PracticeRecordPage()
         {
@@ -18,12 +19,17 @@ namespace PracticeRecord.Views
             this.ViewModel.PracticeDataViewModel.RecordUpdated += this.ViewModel_RecordUpdated;
         }
 
+        private Style CurrentWeekStyle => this.Resources.First(res => res.Key == "CurrentWeekLabel").Value as Style;
+
+        private Style WeekStyle => this.Resources.First(res => res.Key == "WeekLabel").Value as Style;
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
             this.CurrentDatePicker.MaximumDate = this.ViewModel.PeriodStartDate.AddDays(83);
             this.CurrentDatePicker.MinimumDate = this.ViewModel.PeriodStartDate;
             this.CurrentDatePicker.Date = DateTime.Today.Date;
+            this.HighlightWeekLabels();
         }
 
         private void ViewModel_RecordUpdated(object sender, EventArgs e)
@@ -36,6 +42,7 @@ namespace PracticeRecord.Views
         private void InitializeGridBindings()
         {
             this.boxViews = this.FindByName<Grid>("TableGrid").Children.Where(child => child is BoxView).Cast<BoxView>().ToList();
+            this.labels = this.FindByName<Grid>("TableGrid").Children.Where(child => child is Label).Cast<Label>().ToList();
             this.RefreshBoxViewState();
         }
 
@@ -46,6 +53,22 @@ namespace PracticeRecord.Views
                 for (var boxViewIndex = 0; boxViewIndex < this.boxViews.Count; boxViewIndex++)
                 {
                     this.boxViews[boxViewIndex].Color = this.ViewModel.DoneCollection[boxViewIndex];
+                }
+            }
+        }
+
+        private void HighlightWeekLabels()
+        {
+            if (this.labels != null)
+            {
+                for (var labelIndex = 0; labelIndex < 12; labelIndex++)
+                {
+                    this.labels[labelIndex].Style = labelIndex == this.ViewModel.WeekOffset ? this.CurrentWeekStyle : this.WeekStyle;
+                }
+
+                for (var labelIndex = 12; labelIndex < 23; labelIndex++)
+                {
+                    this.labels[labelIndex].Style = labelIndex - 12 == this.ViewModel.WeekOffset ? this.CurrentWeekStyle : this.WeekStyle;
                 }
             }
         }
