@@ -21,8 +21,9 @@
         public PracticeDataViewModel()
         {
             this.dropboxAccess = new DropboxAccess();
-            Task.Run(() => this.dropboxAccess.FetchDatabaseFile());
-            this.dropboxAccess.TestSaveAndRetrieve();
+            this.dropboxAccess.SaveDatabaseFile();
+            this.dropboxAccess.FetchDatabaseFile();
+            //this.dropboxAccess.TestSaveAndRetrieve();
             var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             var databasePath = Path.Combine(folderPath, "PracticeRecord.db3");
             this.PracticeItemDataStore = new PracticeItemDataStore(databasePath);
@@ -34,7 +35,7 @@
         {
             this.PracticeItems = new ObservableCollection<PracticeItem>(this.PracticeItemDataStore.GetItemsAsync().Result.ToList());
             RecordUpdated?.Invoke(this, null);
-            Task.Run(() => this.dropboxAccess.SaveDatabaseFile().Result);
+            this.dropboxAccess.SaveDatabaseFile();
         }
     }
 }

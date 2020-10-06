@@ -15,7 +15,6 @@ namespace PracticeRecord.Services
     public class PracticeItemDataStore : IDataStore<PracticeItem>
     {
         private readonly SQLiteAsyncConnection databaseConnection;
-        //private const string localFilesPath = "/storage/emulated/0/Android/data/com.openfeature.practicerecord/files";
 
         public PracticeItemDataStore(string databaseFilePath)
         {

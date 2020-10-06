@@ -26,24 +26,14 @@
             this.databasePath = Path.Combine(this.folderPath, DatabaseName);
         }
 
-        public async Task<bool> SaveDatabaseFile()
+        public bool FetchDatabaseFile()
         {
             try
             {
                 using var dropboxClient = new DropboxClient(AccessToken);
-                var fileList = Directory.EnumerateFiles(this.folderPath);
-                var enumerable = fileList as string[] ?? fileList.ToArray();
-                Debug.WriteLine(enumerable.Length);
-                var fileName = enumerable.First(x => x.Contains("PracticeRecord.db3"));
-
-                using var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-
-                var success =await
-                    dropboxClient.Files.UploadAsync(
-                        $"/PracticeRecord/{DatabaseName}", // /PracticeRecord/
-                        WriteMode.Overwrite.Instance,
-                        body: fileStream);
-
+                var downloadResponse = dropboxClient.Files.DownloadAsync($"/{DatabaseName}").Result; // /PracticeRecord/
+                File.WriteAllBytes(this.databasePath, downloadResponse.GetContentAsByteArrayAsync().Result);
+                Debug.WriteLine($"Success writing {this.databasePath}");
                 return true;
             }
             catch (Exception exception)
@@ -54,14 +44,23 @@
             return false;
         }
 
-        public async Task<bool> FetchDatabaseFile()
+        public bool SaveDatabaseFile()
         {
             try
             {
+                var fileList = Directory.EnumerateFiles(this.folderPath);
+                var enumerable = fileList as string[] ?? fileList.ToArray();
+                Debug.WriteLine(enumerable.Length);
+                var fileName = enumerable.First(x => x.Contains("PracticeRecord.db3"));
+                using var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
                 using var dropboxClient = new DropboxClient(AccessToken);
-                var downloadResponse = await dropboxClient.Files.DownloadAsync($"/PracticeRecord/{DatabaseName}"); // /PracticeRecord/
-                File.WriteAllBytes(this.databasePath, downloadResponse.GetContentAsByteArrayAsync().Result);
-                var success = await downloadResponse.GetContentAsStreamAsync();
+                var success =
+                    dropboxClient.Files.UploadAsync(
+                        $"/{DatabaseName}", // /PracticeRecord/
+                        WriteMode.Overwrite.Instance,
+                        body: fileStream).Result;
+
+                Debug.WriteLine(success.IsFile);
                 return true;
             }
             catch (Exception exception)
@@ -76,7 +75,7 @@
         {
             try
             {
-                using var dropboxClient = new DropboxClient(AccessToken);
+                var dropboxClient = new DropboxClient(AccessToken);
                 var someBytes = new byte[] { (byte)'1', (byte)'5', (byte)'4' };
                 var memoryStream = new MemoryStream(someBytes);
                 var writeSuccess = 
