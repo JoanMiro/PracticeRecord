@@ -1,20 +1,22 @@
 ﻿namespace PracticeRecord.Data
 {
+    using Dropbox.Api;
+    using Dropbox.Api.Files;
+    using Models;
+    using Newtonsoft.Json;
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
-    using System.Security.Cryptography;
+    using System.Net.Http;
     using System.Threading.Tasks;
-    using Dropbox.Api;
-    using Dropbox.Api.Auth;
-    using Dropbox.Api.Files;
+    using Xamarin.Forms;
 
     public class DropboxAccess
     {
         private const string AccessToken =
-            "5l6JIvpKWb8AAAAAAAAAAVo6D12GTKS2wMKA0RrQxmonx29R43fKL_KzrEHmWfIs"; 
-        //private readonly DropboxClient dropboxClient;
+            "qr0GWTxnqoQAAAAAAAAAAY324Zfa4cI9aut-qgxw6BRaFpz816-T3Ex4ijEiPDjD";
 
         private readonly string databasePath;
         private readonly string folderPath;
@@ -30,8 +32,9 @@
         {
             try
             {
-                using var dropboxClient = new DropboxClient(AccessToken);
-                var downloadResponse = dropboxClient.Files.DownloadAsync($"/{DatabaseName}").Result; // /PracticeRecord/
+                using var dropboxClient = GetClient();
+
+                var downloadResponse = dropboxClient.Files.DownloadAsync($"/{DatabaseName}").Result;
                 File.WriteAllBytes(this.databasePath, downloadResponse.GetContentAsByteArrayAsync().Result);
                 Debug.WriteLine($"Success writing {this.databasePath}");
                 return true;
@@ -53,7 +56,7 @@
                 Debug.WriteLine(enumerable.Length);
                 var fileName = enumerable.First(x => x.Contains("PracticeRecord.db3"));
                 using var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-                using var dropboxClient = new DropboxClient(AccessToken);
+                using var dropboxClient = GetClient();
                 var success =
                     dropboxClient.Files.UploadAsync(
                         $"/{DatabaseName}", // /PracticeRecord/
@@ -71,27 +74,32 @@
             return false;
         }
 
-        public async Task TestSaveAndRetrieve()
+        public List<PracticeItem> DownloadSerializedFile()
         {
-            try
-            {
-                var dropboxClient = new DropboxClient(AccessToken);
-                var someBytes = new byte[] { (byte)'1', (byte)'5', (byte)'4' };
-                var memoryStream = new MemoryStream(someBytes);
-                var writeSuccess = 
-                    dropboxClient.Files.UploadAsync(
-                        $"/PracticeRecord/{DatabaseName}", // /PracticeRecord/
-                        WriteMode.Overwrite.Instance,
-                        body: memoryStream).Result;
+            using var dropboxClient = GetClient();
+            var downloadResponse = dropboxClient.Files.DownloadAsync("/practiceRecord.txt").Result;
+            var content = downloadResponse.GetContentAsStringAsync().Result;
+            return JsonConvert.DeserializeObject<List<PracticeItem>>(content);
+        }
 
-                var downloadResponse = await dropboxClient.Files.DownloadAsync($"/PracticeRecord/{DatabaseName}"); // /PracticeRecord/
-                File.WriteAllBytes(this.databasePath, downloadResponse.GetContentAsByteArrayAsync().Result);
-                var readSuccess =  downloadResponse.GetContentAsStreamAsync().Result;
-            }
-            catch (Exception exception)
+        public void UploadSerializedFile(List<PracticeItem> practiceItems)
+        {
+            var payload = JsonConvert.SerializeObject(practiceItems, Formatting.None);
+
+            using var fileStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(payload));
+            using var dropboxClient = GetClient();
+            var success = dropboxClient.Files.UploadAsync("/practiceRecord.txt", WriteMode.Overwrite.Instance, body: fileStream).Result;
+            Debug.WriteLine(success.IsFile);
+        }
+
+        private static DropboxClient GetClient()
+        {
+            if (Device.RuntimePlatform == Device.Android)
             {
-                Console.WriteLine(exception);
+                return new DropboxClient(AccessToken, new DropboxClientConfig { HttpClient = new HttpClient(new HttpClientHandler()) });
             }
+
+            return new DropboxClient(AccessToken);
         }
     }
 }

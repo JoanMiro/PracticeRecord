@@ -25,11 +25,14 @@ namespace PracticeRecord
 
         protected override void OnSleep()
         {
+            MessagingCenter.Send(this, "SaveData");
         }
 
         protected override void OnResume()
         {
-            if (this.MainPage is AppShell appShell && appShell.CurrentItem!=null && appShell.CurrentItem.Items.Count>0)
+            MessagingCenter.Send(this, "CheckState");
+
+            if (this.MainPage is AppShell appShell && appShell.CurrentItem != null && appShell.CurrentItem.Items.Count > 0)
             {
                 var controller = appShell.CurrentItem.Items[0] as IShellSectionController;
                 if (controller?.PresentedPage != null)

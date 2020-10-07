@@ -31,6 +31,29 @@
             }
 
             this.DoneSwitchToggledCommand = new Command(this.DoneSwitchToggled);
+
+            MessagingCenter.Subscribe<App>(
+                this, "SaveData", sender =>
+                {
+                    this.SaveData();
+                });
+
+            MessagingCenter.Subscribe<App>(
+                this, "CheckState", sender =>
+                {
+                    this.CheckState();
+                });
+        }
+
+        private void CheckState()
+        {
+            this.CurrentDate = DateTime.Today.Date;
+            this.PracticeDataViewModel.RefreshState();
+        }
+
+        private void SaveData()
+        {
+            this.PracticeDataViewModel.SaveState();
         }
 
         public PracticeDataViewModel PracticeDataViewModel => Application.Current.MainPage.BindingContext as PracticeDataViewModel;
