@@ -38,6 +38,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0" Text="Stats:" />
         <ScrollView Grid.Column="0" Grid.Row="1">
@@ -61,6 +62,10 @@
             </Grid>
 
         </ScrollView>
+        <StackLayout Grid.Row="2" Orientation="Horizontal" Padding="0,4">
+            <Label Text="Version:" HorizontalOptions="Start" />
+            <Label Text="{Binding Version}" HorizontalOptions="Start" />
+        </StackLayout>
     </Grid>
 
 </ContentPage>
