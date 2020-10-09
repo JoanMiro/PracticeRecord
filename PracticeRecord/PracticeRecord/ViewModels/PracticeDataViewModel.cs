@@ -1,19 +1,21 @@
 ﻿namespace PracticeRecord.ViewModels
 {
-    using System;
+    using Data;
     using Models;
     using Services;
+    using System;
     using System.Collections.ObjectModel;
     using System.IO;
     using System.Linq;
-    using System.Threading.Tasks;
-    using Data;
     using Xamarin.Essentials;
 
     public class PracticeDataViewModel : BaseViewModel
     {
         private readonly DropboxAccess dropboxAccess;
+
         public PracticeItemDataStore PracticeItemDataStore { get; }
+
+        private const string DatabaseName = "PracticeRecord.db3";
 
         public ObservableCollection<PracticeItem> PracticeItems { get; private set; }
 
@@ -21,12 +23,17 @@
 
         public PracticeDataViewModel()
         {
-            this.dropboxAccess = new DropboxAccess();
             var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            var databasePath = Path.Combine(folderPath, "PracticeRecord.db3");
-            this.PracticeItemDataStore = new PracticeItemDataStore(databasePath);
+            this.DatabasePath = Path.Combine(folderPath, DatabaseName);
+            this.dropboxAccess = new DropboxAccess(folderPath, DatabaseName);
+
+            this.PracticeItemDataStore = new PracticeItemDataStore(this.DatabasePath);
             this.RefreshPracticeItems();
         }
+        
+        public bool IsChangedLocally { get; set; }
+
+        public string DatabasePath { get; set; }
 
         private void RefreshPracticeItems()
         {
@@ -43,17 +50,36 @@
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                //this.PracticeItems = new ObservableCollection<PracticeItem>(this.dropboxAccess.DownloadSerializedFile());
-                this.dropboxAccess.FetchDatabaseFile();
-                this.RefreshPracticeItems();
+                try
+                {
+                    //this.PracticeItemDataStore.CloseConnection();
+                    if (this.dropboxAccess.FetchDatabaseFile())
+                    {
+                        //this.PracticeItemDataStore.OpenConnection();
+                        this.RefreshPracticeItems();
+                        this.IsChangedLocally = false;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
             }
         }
+
         public void SaveState()
         {
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet && this.IsChangedLocally)
             {
-                //this.dropboxAccess.UploadSerializedFile(this.PracticeItems.ToList());
-                this.dropboxAccess.SaveDatabaseFile();
+                try
+                {
+                    this.dropboxAccess.SaveDatabaseFile();
+                    this.IsChangedLocally = false;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
             }
         }
     }

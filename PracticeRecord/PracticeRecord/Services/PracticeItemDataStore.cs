@@ -9,23 +9,23 @@ using System.Threading.Tasks;
 namespace PracticeRecord.Services
 {
     using System.IO;
-    using Xamarin.Forms;
-    using Xamarin.Forms.PlatformConfiguration;
 
     public class PracticeItemDataStore : IDataStore<PracticeItem>
     {
-        private readonly SQLiteAsyncConnection databaseConnection;
+        private readonly string databaseFilePath;
+        private SQLiteAsyncConnection databaseConnection;
 
         public PracticeItemDataStore(string databaseFilePath)
         {
-            this.databaseConnection = new SQLiteAsyncConnection(databaseFilePath);
+            this.databaseFilePath = databaseFilePath;
+            this.OpenConnection();
             var result = this.databaseConnection.CreateTableAsync<PracticeItem>().Result;
             Debug.WriteLine(result);
             if (this.GetItemsAsync().Result.ToList().Count == 0)
             {
                 this.SeedHistory();
             }
-           
+
             // this.FileDump();
         }
 
@@ -89,7 +89,6 @@ namespace PracticeRecord.Services
 
         }
 
-
         private async void FileDump()
         {
             try
@@ -113,5 +112,14 @@ namespace PracticeRecord.Services
             }
         }
 
+        public void CloseConnection()
+        {
+            this.databaseConnection.CloseAsync();
+        }
+
+        public void OpenConnection()
+        {
+            this.databaseConnection = new SQLiteAsyncConnection(this.databaseFilePath);
+        }
     }
 }

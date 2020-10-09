@@ -12,12 +12,14 @@ namespace PracticeRecord.ViewModels
 {
     using System.Diagnostics;
     using System.Linq;
+    using Xamarin.Essentials;
+
 
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDataStore<PracticeItem> DataStore => DependencyService.Get<IDataStore<PracticeItem>>();
 
-        string title = string.Empty;
+        private string title = string.Empty;
         private Color done;
         private Color notDone;
         private Color primary;
@@ -38,8 +40,11 @@ namespace PracticeRecord.ViewModels
             set => this.SetProperty(ref this.primary, value);
         }
 
+        public string Version => VersionTracking.CurrentVersion;
+
         public BaseViewModel()
         {
+            VersionTracking.Track();
             if (Application.Current is App app)
             {
                 var doneResourcePair = app?.Resources.First(res => res.Key == "Done");
@@ -59,6 +64,7 @@ namespace PracticeRecord.ViewModels
                 }
             }
         }
+
         public string Title
         {
             get => this.title;

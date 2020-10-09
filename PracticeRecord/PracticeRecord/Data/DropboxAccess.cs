@@ -18,15 +18,22 @@
         private const string AccessToken =
             "qr0GWTxnqoQAAAAAAAAAAY324Zfa4cI9aut-qgxw6BRaFpz816-T3Ex4ijEiPDjD";
 
-        private readonly string databasePath;
         private readonly string folderPath;
-        private const string DatabaseName = "PracticeRecord.db3";
+        private readonly string databaseName;
+        private string databaseFullPath;
 
-        public DropboxAccess()
+
+        public DropboxAccess(string folderPath, string databaseName)
         {
-            this.folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            this.databasePath = Path.Combine(this.folderPath, DatabaseName);
+            this.folderPath = folderPath;
+            this.databaseName = databaseName;
+            this. databaseFullPath = Path.Combine(folderPath, databaseName);
+            this.LocalUpdateTime = File.GetLastWriteTime(this.databaseFullPath).ToUniversalTime();
         }
+
+        public DateTime LocalUpdateTime { get; private set; }
+
+        public DateTime RemoteUpdateTime { get; private set; }
 
         public bool FetchDatabaseFile()
         {
@@ -34,10 +41,18 @@
             {
                 using var dropboxClient = GetClient();
 
-                var downloadResponse = dropboxClient.Files.DownloadAsync($"/{DatabaseName}").Result;
-                File.WriteAllBytes(this.databasePath, downloadResponse.GetContentAsByteArrayAsync().Result);
-                Debug.WriteLine($"Success writing {this.databasePath}");
-                return true;
+                var downloadResponse = dropboxClient.Files.DownloadAsync($"/{this.databaseName}").Result;
+                this.RemoteUpdateTime =
+                    (downloadResponse.Response.ClientModified > downloadResponse.Response.ServerModified
+                        ? downloadResponse.Response.ClientModified
+                        : downloadResponse.Response.ServerModified).ToUniversalTime();
+                if (this.RemoteUpdateTime > this.LocalUpdateTime)
+                {
+                    File.WriteAllBytes(this.databaseFullPath, downloadResponse.GetContentAsByteArrayAsync().Result);
+                    Debug.WriteLine($"Success writing {this.databaseFullPath}");
+                    this.LocalUpdateTime = this.RemoteUpdateTime;
+                    return true;
+                }
             }
             catch (Exception exception)
             {
@@ -59,7 +74,7 @@
                 using var dropboxClient = GetClient();
                 var success =
                     dropboxClient.Files.UploadAsync(
-                        $"/{DatabaseName}", // /PracticeRecord/
+                        $"/{this.databaseName}", // /PracticeRecord/
                         WriteMode.Overwrite.Instance,
                         body: fileStream).Result;
 

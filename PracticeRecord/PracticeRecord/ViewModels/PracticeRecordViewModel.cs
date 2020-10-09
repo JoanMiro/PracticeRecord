@@ -30,7 +30,8 @@
                 this.DoneCollection.Add(this.currentPeriodRecord.SerializedRecord[colorIndex] == '1' ? this.Done : this.NotDone);
             }
 
-            this.DoneSwitchToggledCommand = new Command(this.DoneSwitchToggled);
+            // this.DoneSwitchToggledCommand = new Command(this.DoneSwitchToggled);
+            this.CheckState();
 
             MessagingCenter.Subscribe<App>(
                 this, "SaveData", sender =>
@@ -91,13 +92,13 @@
 
         public bool DayIsDone => this.DoneCollection[this.DaysOffSet] == this.Done;
 
-        private void DoneSwitchToggled(object toggledObject)
-        {
-            var toggled = (bool)toggledObject;
-            var daysOffset = this.CurrentDate.DayOfYear - this.PeriodStartDate.DayOfYear;
-            this.DoneCollection[daysOffset] = toggled ? this.Done : this.NotDone;
-            this.UpdateDoneDatabaseRecord();
-        }
+        //private void DoneSwitchToggled(object toggledObject)
+        //{
+        //    var toggled = (bool)toggledObject;
+        //    var daysOffset = this.CurrentDate.DayOfYear - this.PeriodStartDate.DayOfYear;
+        //    this.DoneCollection[daysOffset] = toggled ? this.Done : this.NotDone;
+        //    this.UpdateDoneDatabaseRecord();
+        //}
 
         private void UpdateDoneDatabaseRecord()
         {
@@ -111,6 +112,7 @@
             this.DoneCollection[index] = toggled ? this.Done : this.NotDone;
             this.UpdateDoneDatabaseRecord();
             this.PracticeDataViewModel.OnRecordUpdated();
+            this.PracticeDataViewModel.IsChangedLocally = true;
         }
     }
 }
