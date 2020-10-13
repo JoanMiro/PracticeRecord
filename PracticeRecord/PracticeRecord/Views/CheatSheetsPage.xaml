@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PracticeRecord.Views.CheatSheetsPage"
+             xmlns:vm="clr-namespace:PracticeRecord.ViewModels"
+             xmlns:pinch="clr-namespace:Xamarin.Forms.PinchZoomImage;assembly=Xamarin.Forms.PinchZoomImage"
+             xmlns:cvw="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!--<cvw:CarouselViewControl Orientation="Vertical" ItemsSource="{Binding Images}">
+        <cvw:CarouselViewControl.ItemTemplate>
+            <DataTemplate>
+                <pinch:PinchZoom Margin="20,0,0,0">
+                    <Image Source="{Binding}"/>
+                </pinch:PinchZoom>
+            </DataTemplate>
+        </cvw:CarouselViewControl.ItemTemplate>
+    </cvw:CarouselViewControl>-->
+
+    <ScrollView VerticalOptions="StartAndExpand" Orientation="Horizontal">
+        <pinch:PinchZoom BackgroundColor="LightGray" HorizontalOptions="Fill" VerticalOptions="Fill">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" x:Name="CircleImage" Source="{Binding Images[0]}"  />
+                <Image Grid.Column="1" x:Name="MajorImage" Source="{Binding Images[1]}" />
+                <Image Grid.Column="2" x:Name="MinorImage" Source="{Binding Images[2]}" />
+            </Grid>
+        </pinch:PinchZoom>
+    </ScrollView>
+    <!--<CarouselView ItemsSource="{Binding Images}">
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+                <Image Source="{Binding}" />
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+    </CarouselView>-->
+</ContentPage>
