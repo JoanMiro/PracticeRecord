@@ -14,21 +14,17 @@
     {
         private DateTime currentDate;
         private DateTime periodStartDate;
-        private PracticeItem currentPeriodRecord;
+        public PracticeItem CurrentPeriodRecord => this.PracticeDataViewModel.PracticeItems.OrderByDescending(i => i.CycleStartDate).First();
 
         public PracticeRecordViewModel()
         {
             this.Title = "Practice Record";
 
-            this.currentPeriodRecord = this.PracticeDataViewModel.PracticeItems.OrderByDescending(i => i.CycleStartDate).First();
             this.CurrentDate = DateTime.Today.Date >= this.PeriodStartDate.Date ? DateTime.Today.Date : this.PeriodStartDate.Date;
 
             _ = this.CheckForNewPeriod();
-            this.PeriodStartDate = this.currentPeriodRecord.CycleStartDate;
-            for (var colorIndex = 0; colorIndex < 84; colorIndex++)
-            {
-                this.DoneCollection.Add(this.currentPeriodRecord.SerializedRecord[colorIndex] == '1' ? this.Done : this.NotDone);
-            }
+            this.PeriodStartDate = this.CurrentPeriodRecord.CycleStartDate;
+            this.RefreshDoneCollection();
 
             // this.DoneSwitchToggledCommand = new Command(this.DoneSwitchToggled);
             this.CheckState();
@@ -46,10 +42,21 @@
                 });
         }
 
+        private void RefreshDoneCollection()
+        {
+            this.DoneCollection.Clear();
+            for (var colorIndex = 0; colorIndex < 84; colorIndex++)
+            {
+                this.DoneCollection.Add(this.CurrentPeriodRecord.SerializedRecord[colorIndex] == '1' ? this.Done : this.NotDone);
+            }
+        }
+
         private void CheckState()
         {
             this.CurrentDate = DateTime.Today.Date;
             this.PracticeDataViewModel.RefreshState();
+            this.RefreshDoneCollection();
+            this.PracticeDataViewModel.OnRecordUpdated();
         }
 
         private void SaveData()
@@ -61,12 +68,12 @@
 
         private async Task CheckForNewPeriod()
         {
-            var nextPeriodStartDate = this.currentPeriodRecord.CycleStartDate.AddDays(84);
+            var nextPeriodStartDate = this.CurrentPeriodRecord.CycleStartDate.AddDays(84);
             if (nextPeriodStartDate.Date <= this.CurrentDate.Date)
             {
                 // create new cycle...
-                this.currentPeriodRecord = new PracticeItem { CycleStartDate = nextPeriodStartDate };
-                await this.PracticeDataViewModel.PracticeItemDataStore.AddItemAsync(this.currentPeriodRecord);
+                var newCurrentPeriodRecord = new PracticeItem { CycleStartDate = nextPeriodStartDate };
+                await this.PracticeDataViewModel.PracticeItemDataStore.AddItemAsync(newCurrentPeriodRecord);
             }
         }
 
@@ -88,22 +95,12 @@
 
         public ObservableCollection<Color> DoneCollection { get; } = new ObservableCollection<Color>();
 
-        public ICommand DoneSwitchToggledCommand { get; }
-
         public bool DayIsDone => this.DoneCollection[this.DaysOffSet] == this.Done;
-
-        //private void DoneSwitchToggled(object toggledObject)
-        //{
-        //    var toggled = (bool)toggledObject;
-        //    var daysOffset = this.CurrentDate.DayOfYear - this.PeriodStartDate.DayOfYear;
-        //    this.DoneCollection[daysOffset] = toggled ? this.Done : this.NotDone;
-        //    this.UpdateDoneDatabaseRecord();
-        //}
 
         private void UpdateDoneDatabaseRecord()
         {
-            this.currentPeriodRecord.SerializedRecord = new string(this.DoneCollection.Select(color => color == this.NotDone ? '0' : '1').ToArray());
-            var success = this.PracticeDataViewModel.PracticeItemDataStore.UpdateItemAsync(this.currentPeriodRecord).Result;
+            this.CurrentPeriodRecord.SerializedRecord = new string(this.DoneCollection.Select(color => color == this.NotDone ? '0' : '1').ToArray());
+            var success = this.PracticeDataViewModel.PracticeItemDataStore.UpdateItemAsync(this.CurrentPeriodRecord).Result;
         }
 
         public void ToggleDay(int index)

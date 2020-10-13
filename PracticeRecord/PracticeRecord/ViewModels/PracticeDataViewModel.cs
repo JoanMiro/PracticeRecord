@@ -52,10 +52,8 @@
             {
                 try
                 {
-                    //this.PracticeItemDataStore.CloseConnection();
                     if (this.dropboxAccess.FetchDatabaseFile())
                     {
-                        //this.PracticeItemDataStore.OpenConnection();
                         this.RefreshPracticeItems();
                         this.IsChangedLocally = false;
                     }

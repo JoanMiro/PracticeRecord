@@ -5,9 +5,12 @@ using Xamarin.Forms.Xaml;
 
 namespace PracticeRecord.Views
 {
-    public partial class AboutPage : ContentPage
+    using System.Collections.Generic;
+    using System.Diagnostics;
+
+    public partial class CheatSheetsPage : ContentPage
     {
-        public AboutPage()
+        public CheatSheetsPage()
         {
             this.InitializeComponent();
         }

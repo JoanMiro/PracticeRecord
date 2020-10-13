@@ -73,17 +73,6 @@ namespace PracticeRecord.Views
             }
         }
 
-        private void DoneSwitchToggled(object sender, ToggledEventArgs e)
-        {
-            this.ViewModel.DoneSwitchToggledCommand.Execute(e.Value);
-            this.RefreshBoxViewState();
-        }
-
-        //private void DatePicker_OnDateSelected(object sender, DateChangedEventArgs e)
-        //{
-        //    this.DoneSwitch.IsToggled = this.ViewModel.DayIsDone;
-        //}
-
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             var index = this.boxViews.IndexOf(sender as BoxView);
@@ -91,11 +80,6 @@ namespace PracticeRecord.Views
             {
                 this.ViewModel.ToggleDay(index);
             }
-
-        }
-
-        private void DatePicker_OnDateSelected(object sender, DateChangedEventArgs e)
-        {
 
         }
     }
