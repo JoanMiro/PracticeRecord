@@ -1,23 +1,20 @@
-﻿using System;
-using System.Windows.Input;
-using Xamarin.Essentials;
-using Xamarin.Forms;
-
-namespace PracticeRecord.ViewModels
+﻿namespace PracticeRecord.ViewModels
 {
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using Xamarin.Forms;
 
-    public class AboutViewModel : BaseViewModel
+    public class CheatSheetViewModel : BaseViewModel
     {
-        public AboutViewModel()
+        public CheatSheetViewModel()
         {
             this.Title = "Cheat Sheets";
             this.Images = new ObservableCollection<ImageSource>
             {
                 ImageSource.FromResource("PracticeRecord.Images.CircleOfFifths_WithRelativeMinorKeys.png"),
                 ImageSource.FromResource("PracticeRecord.Images.MajorScales.png"),
-                ImageSource.FromResource("PracticeRecord.Images.MinorScales.png")
+                ImageSource.FromResource("PracticeRecord.Images.MinorScales.png"),
+                ImageSource.FromResource("PracticeRecord.Images.key_signatures_chart.png"),
+                ImageSource.FromResource("PracticeRecord.Images.music-key-signatures.png")
             };
         }
 

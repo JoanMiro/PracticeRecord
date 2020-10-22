@@ -11,15 +11,20 @@
   <ItemGroup>
     <None Remove="Data\GlassPieces.json" />
     <None Remove="Images\CircleOfFifths_WithRelativeMinorKeys.png" />
+    <None Remove="Images\key_signatures_chart.png" />
     <None Remove="Images\MajorScales.png" />
     <None Remove="Images\MinorScales.png" />
+    <None Remove="Images\music-key-signatures.png" />
+    <None Remove="Images\music-key-signatures2.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Data\GlassPieces.json" />
     <EmbeddedResource Include="Images\CircleOfFifths_WithRelativeMinorKeys.png" />
+    <EmbeddedResource Include="Images\key_signatures_chart.png" />
     <EmbeddedResource Include="Images\MajorScales.png" />
     <EmbeddedResource Include="Images\MinorScales.png" />
+    <EmbeddedResource Include="Images\music-key-signatures.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -8,7 +8,7 @@
              Title="{Binding Title}">
 
     <ContentPage.BindingContext>
-        <vm:AboutViewModel />
+        <vm:CheatSheetViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Resources>
@@ -33,10 +33,14 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Image Grid.Column="0" x:Name="CircleImage" Source="{Binding Images[0]}"  />
                 <Image Grid.Column="1" x:Name="MajorImage" Source="{Binding Images[1]}" />
                 <Image Grid.Column="2" x:Name="MinorImage" Source="{Binding Images[2]}" />
+                <Image Grid.Column="3" x:Name="KeySig1" Source="{Binding Images[3]}" />
+                <Image Grid.Column="4" x:Name="KeySig2" Source="{Binding Images[4]}" />
             </Grid>
         </pinch:PinchZoom>
     </ScrollView>
