@@ -1,4 +1,6 @@
-﻿namespace PracticeRecord.Models
+﻿using PracticeRecord.Models;
+
+namespace PracticeRecord.Extensions
 {
     using System.Linq;
 

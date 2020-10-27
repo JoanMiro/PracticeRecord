@@ -1,4 +1,5 @@
 ﻿using System;
+using PracticeRecord.Extensions;
 using SQLite;
 
 namespace PracticeRecord.Models
