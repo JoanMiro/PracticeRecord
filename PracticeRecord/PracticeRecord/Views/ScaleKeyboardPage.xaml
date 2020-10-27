@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:KeyboardContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+            x:Class="PracticeRecord.Views.ScaleKeyboardPage" 
+            xmlns:viewModels="clr-namespace:PracticeRecord.ViewModels"
+            xmlns:views="clr-namespace:PracticeRecord.Views"
+            Title="{Binding Title}">
+
+    <views:KeyboardContentPage.BindingContext>
+        <viewModels:ChordDataViewModel />
+    </views:KeyboardContentPage.BindingContext>
+
+    <ScrollView Margin="20,0,20,0">
+        <FlexLayout Direction="Column">
+            <StackLayout>
+                <Grid x:Name="KeyboardGrid" Margin="10,20"
+                      BackgroundColor="LightSlateGray" ColumnSpacing="0"
+                      HeightRequest="231" HorizontalOptions="StartAndExpand"
+                      MinimumHeightRequest="154" MinimumWidthRequest="693"
+                      RowSpacing="0" VerticalOptions="StartAndExpand"
+                      WidthRequest="693">
+                    <Grid.Resources>
+                        <ResourceDictionary>
+                            <Style TargetType="Button">
+                                <Setter Property="CornerRadius" Value="1" />
+                                <Setter Property="BorderColor" Value="Black" />
+                                <Setter Property="BorderWidth" Value="1" />
+                                <Setter Property="Margin" Value="0" />
+                                <Setter Property="Padding" Value="0" />
+                            </Style>
+                        </ResourceDictionary>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60*" />
+                        <RowDefinition Height="40*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="ScaleKey0" Grid.Row="0"
+                            Grid.RowSpan="2" Grid.Column="0"
+                            Grid.ColumnSpan="4" BackgroundColor="White"
+                            Clicked="ScaleKey_OnClicked" TabIndex="0" />
+                    <Button x:Name="ScaleKey2" Grid.Row="0"
+                            Grid.RowSpan="2" Grid.Column="4"
+                            Grid.ColumnSpan="4" BackgroundColor="White"
+                            Clicked="ScaleKey_OnClicked" TabIndex="2" />
+                    <Button x:Name="ScaleKey4" Grid.Row="0"
+                            Grid.RowSpan="2" Grid.Column="8"
+                            Grid.ColumnSpan="4" BackgroundColor="White"
+                            Clicked="ScaleKey_OnClicked" TabIndex="4" />
+                    <Button x:Name="ScaleKey5" Grid.Row="0"
+                            Grid.RowSpan="2" Grid.Column="12"
+                            Grid.ColumnSpan="4" BackgroundColor="White"
+                            Clicked="ScaleKey_OnClicked" TabIndex="5" />
+                    <Button x:Name="ScaleKey7" Grid.Row="0"
+                            Grid.RowSpan="2" Grid.Column="16"
+                            Grid.ColumnSpan="4" BackgroundColor="White"
+                            Clicked="ScaleKey_OnClicked" TabIndex="7" />
+                    <Button x:Name="ScaleKey9" Grid.Row="0"
+                            Grid.RowSpan="2" Grid.Column="20"
+                            Grid.ColumnSpan="4" BackgroundColor="White"
+                            Clicked="ScaleKey_OnClicked" TabIndex="9" />
+                    <Button x:Name="ScaleKey11" Grid.Row="0"
+                            Grid.RowSpan="2" Grid.Column="24"
+                            Grid.ColumnSpan="4" BackgroundColor="White"
+                            Clicked="ScaleKey_OnClicked" TabIndex="11" />
+                    <Button x:Name="ScaleKey12" Grid.Row="0"
+                            Grid.RowSpan="2" Grid.Column="28"
+                            Grid.ColumnSpan="4" BackgroundColor="White"
+                            Clicked="ScaleKey_OnClicked" TabIndex="12" />
+                    <Button x:Name="ScaleKey14" Grid.Row="0"
+                            Grid.RowSpan="2" Grid.Column="32"
+                            Grid.ColumnSpan="4" BackgroundColor="White"
+                            Clicked="ScaleKey_OnClicked" TabIndex="14" />
+                    <Button x:Name="ScaleKey16" Grid.Row="0"
+                            Grid.RowSpan="2" Grid.Column="36"
+                            Grid.ColumnSpan="4" BackgroundColor="White"
+                            Clicked="ScaleKey_OnClicked" TabIndex="16" />
+                    <Button x:Name="ScaleKey17" Grid.Row="0"
+                            Grid.RowSpan="2" Grid.Column="40"
+                            Grid.ColumnSpan="4" BackgroundColor="White"
+                            Clicked="ScaleKey_OnClicked" TabIndex="17" />
+                    <Button x:Name="ScaleKey19" Grid.Row="0"
+                            Grid.RowSpan="2" Grid.Column="44"
+                            Grid.ColumnSpan="4" BackgroundColor="White"
+                            Clicked="ScaleKey_OnClicked" TabIndex="19" />
+                    <Button x:Name="ScaleKey21" Grid.Row="0"
+                            Grid.RowSpan="2" Grid.Column="48"
+                            Grid.ColumnSpan="4" BackgroundColor="White"
+                            Clicked="ScaleKey_OnClicked" TabIndex="21" />
+                    <Button x:Name="ScaleKey23" Grid.Row="0"
+                            Grid.RowSpan="2" Grid.Column="52"
+                            Grid.ColumnSpan="4" BackgroundColor="White"
+                            Clicked="ScaleKey_OnClicked" TabIndex="23" />
+                    <Button x:Name="ScaleKey24" Grid.Row="0"
+                            Grid.RowSpan="2" Grid.Column="56"
+                            Grid.ColumnSpan="4" BackgroundColor="White"
+                            Clicked="ScaleKey_OnClicked" TabIndex="24" />
+
+                    <Button x:Name="ScaleKey1" Grid.Row="0"
+                            Grid.Column="3" Grid.ColumnSpan="2"
+                            BackgroundColor="Black" Clicked="ScaleKey_OnClicked"
+                            TabIndex="1" />
+                    <Button x:Name="ScaleKey3" Grid.Row="0"
+                            Grid.Column="7" Grid.ColumnSpan="2"
+                            BackgroundColor="Black" Clicked="ScaleKey_OnClicked"
+                            TabIndex="3" />
+                    <Button x:Name="ScaleKey6" Grid.Row="0"
+                            Grid.Column="15" Grid.ColumnSpan="2"
+                            BackgroundColor="Black" Clicked="ScaleKey_OnClicked"
+                            TabIndex="6" />
+                    <Button x:Name="ScaleKey8" Grid.Row="0"
+                            Grid.Column="19" Grid.ColumnSpan="2"
+                            BackgroundColor="Black" Clicked="ScaleKey_OnClicked"
+                            TabIndex="8" />
+                    <Button x:Name="ScaleKey10" Grid.Row="0"
+                            Grid.Column="23" Grid.ColumnSpan="2"
+                            BackgroundColor="Black" Clicked="ScaleKey_OnClicked"
+                            TabIndex="10" />
+                    <Button x:Name="ScaleKey13" Grid.Row="0"
+                            Grid.Column="31" Grid.ColumnSpan="2"
+                            BackgroundColor="Black" Clicked="ScaleKey_OnClicked"
+                            TabIndex="13" />
+                    <Button x:Name="ScaleKey15" Grid.Row="0"
+                            Grid.Column="35" Grid.ColumnSpan="2"
+                            BackgroundColor="Black" Clicked="ScaleKey_OnClicked"
+                            TabIndex="15" />
+                    <Button x:Name="ScaleKey18" Grid.Row="0"
+                            Grid.Column="43" Grid.ColumnSpan="2"
+                            BackgroundColor="Black" Clicked="ScaleKey_OnClicked"
+                            TabIndex="18" />
+                    <Button x:Name="ScaleKey20" Grid.Row="0"
+                            Grid.Column="47" Grid.ColumnSpan="2"
+                            BackgroundColor="Black" Clicked="ScaleKey_OnClicked"
+                            TabIndex="20" />
+                    <Button x:Name="ScaleKey22" Grid.Row="0"
+                            Grid.Column="51" Grid.ColumnSpan="2"
+                            BackgroundColor="Black" Clicked="ScaleKey_OnClicked"
+                            TabIndex="22" />
+                </Grid>
+            </StackLayout>
+            <StackLayout>
+                <Label Margin="5,0,0,2" FontSize="20"
+                       HorizontalTextAlignment="Start"
+                       Text="{Binding ScaleRootNoteName, StringFormat='Scale: {0}'}"
+                       TextColor="Brown" VerticalTextAlignment="End" />
+                <Picker x:Name="ScalesPicker"
+                        ItemDisplayBinding="{Binding Description}"
+                        ItemsSource="{Binding Scales}"
+                        SelectedItem="{Binding SelectedScale, Mode=TwoWay}" />
+            </StackLayout>
+            <!--</Grid>-->
+        </FlexLayout>
+    </ScrollView>
+
+</views:KeyboardContentPage>
