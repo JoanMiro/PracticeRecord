@@ -1,4 +1,10 @@
-﻿namespace PracticeRecord.ViewModels
+﻿//------------------------------------------------------------------
+//
+// Copyright (c) 2012 - 2020 Openfeature Limited. All rights reserved.
+//
+//------------------------------------------------------------------
+
+namespace PracticeRecord.ViewModels
 {
     using System.Collections.ObjectModel;
     using Xamarin.Forms;

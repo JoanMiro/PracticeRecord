@@ -9,7 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\Chords.xml" />
     <None Remove="Data\GlassPieces.json" />
+    <None Remove="Data\Scales.xml" />
     <None Remove="Images\CircleOfFifths_WithRelativeMinorKeys.png" />
     <None Remove="Images\key_signatures_chart.png" />
     <None Remove="Images\MajorScales.png" />
@@ -19,7 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Data\Chords.xml" />
     <EmbeddedResource Include="Data\GlassPieces.json" />
+    <EmbeddedResource Include="Data\Scales.xml" />
     <EmbeddedResource Include="Images\CircleOfFifths_WithRelativeMinorKeys.png" />
     <EmbeddedResource Include="Images\key_signatures_chart.png" />
     <EmbeddedResource Include="Images\MajorScales.png" />
@@ -28,6 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Amporis.Xamarin.Forms.ColorPicker" Version="1.0.23" />
     <PackageReference Include="CarouselView.FormsPlugin" Version="5.2.0" />
     <PackageReference Include="Dropbox.Api" Version="5.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />

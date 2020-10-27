@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="PracticeRecord.Views.SettingsPage" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:colorPicker="clr-namespace:Amporis.Xamarin.Forms.ColorPicker;assembly=Amporis.Xamarin.Forms.ColorPicker"
+             x:Name="ViewSettingsPage" Title="Settings"
+             mc:Ignorable="d">
+
+    <ContentPage.Resources>
+        <colorPicker:ColorDialogSettings x:Key="ColorDialogSettings" SliderWidth="154" ARGBEditorsWidth="90" ColorEditorWidth="77" EditAlfa="false"/>
+    </ContentPage.Resources>
+    <ScrollView Margin="10,0,10,0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label x:Name="PageTitle" Grid.Row="0"
+                   Margin="0,5,0,8" FontSize="24"
+                   HorizontalOptions="StartAndExpand" Text="Openfeature ChordFactory" />
+            <Label Grid.Row="1" Margin="0,2"
+                   FontAttributes="Bold" FontSize="16"
+                   HorizontalOptions="StartAndExpand" Text="Colours"
+                   TextColor="DarkGray" />
+            <StackLayout Grid.Row="2" Margin="0,0,10,2">
+                <Label Text="Chord Black Key" VerticalOptions="Center" />
+                <colorPicker:ColorPickerEntry x:Name="BlackChordColourPicker" DialogSettings="{StaticResource ColorDialogSettings}"
+                                           Color="{Binding BlackKeySelectedChordColour}"
+                                           VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout Grid.Row="3" Margin="0,0,10,2">
+                <Label Text="Chord White Key" VerticalOptions="Center" />
+                <colorPicker:ColorPickerEntry x:Name="WhiteChordColourPicker" DialogSettings="{StaticResource ColorDialogSettings}"
+                                           Color="{Binding WhiteKeySelectedChordColour}"
+                                           VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout Grid.Row="4" Margin="0,0,10,2">
+                <Label Text="Scale Black Key" VerticalOptions="Center" />
+                <colorPicker:ColorPickerEntry x:Name="BlackScaleColourPicker" DialogSettings="{StaticResource ColorDialogSettings}"
+                                           Color="{Binding BlackKeySelectedScaleColour}"
+                                           VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout Grid.Row="5" Margin="0,0,10,2">
+                <Label Text="Scale White Key" VerticalOptions="Center" />
+                <colorPicker:ColorPickerEntry x:Name="WhiteScaleColourPicker" DialogSettings="{StaticResource ColorDialogSettings}"
+                                           Color="{Binding WhiteKeySelectedScaleColour}"
+                                           VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout Grid.Row="6" Margin="0,0,10,2">
+                <Label Text="Finder Black Key" VerticalOptions="Center" />
+                <colorPicker:ColorPickerEntry x:Name="BlackFinderColourPicker" DialogSettings="{StaticResource ColorDialogSettings}"
+                                           Color="{Binding BlackKeySelectedFinderColour}"
+                                           VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout Grid.Row="7" Margin="0,0,10,2">
+                <Label Text="Finder White Key" VerticalOptions="Center" />
+                <colorPicker:ColorPickerEntry x:Name="WhiteFinderColourPicker" DialogSettings="{StaticResource ColorDialogSettings}"
+                                           Color="{Binding WhiteKeySelectedFinderColour}"
+                                           VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout Grid.Row="8">
+                <Label Margin="0,2" FontAttributes="Bold"
+                       FontSize="16" HorizontalOptions="StartAndExpand"
+                       Text="Sound" TextColor="DarkGray" />
+                <StackLayout Margin="0,2,40,2" HorizontalOptions="End"
+                             Orientation="Horizontal">
+                    <Label Text="Play Chords/Scales?" VerticalOptions="Center" />
+                    <Switch Margin="10,0,0,0"
+                            IsToggled="{Binding AudioIsEnabled}"
+                            VerticalOptions="Center" />
+                </StackLayout>
+                <StackLayout Margin="0,2,40,2" HorizontalOptions="End"
+                             Orientation="Horizontal">
+                    <Label Text="Arpeggiate?" VerticalOptions="Center" />
+                    <Switch Margin="10,0,0,0"
+                            IsEnabled="{Binding AudioIsEnabled}"
+                            IsToggled="{Binding ArpeggiateIsEnabled}"
+                            VerticalOptions="Center" />
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

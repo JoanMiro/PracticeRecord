@@ -1,46 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
-using Xamarin.Forms;
-
-using PracticeRecord.Models;
-using PracticeRecord.Services;
+﻿//------------------------------------------------------------------
+//
+// Copyright (c) 2012 - 2020 Openfeature Limited. All rights reserved.
+//
+//------------------------------------------------------------------
 
 namespace PracticeRecord.ViewModels
 {
-    using System.Diagnostics;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Linq;
+    using System.Runtime.CompilerServices;
+    using Models;
+    using Services;
     using Xamarin.Essentials;
-
+    using Xamarin.Forms;
 
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<PracticeItem> DataStore => DependencyService.Get<IDataStore<PracticeItem>>();
-
-        private string title = string.Empty;
         private Color done;
+        private bool isBusy;
         private Color notDone;
         private Color primary;
 
-        public Color Done
-        {
-            get => this.done;
-            set => this.SetProperty(ref this.done, value);
-        }
-        public Color NotDone
-        {
-            get => this.notDone;
-            set => this.SetProperty(ref this.notDone, value);
-        }
-        public Color Primary
-        {
-            get => this.primary;
-            set => this.SetProperty(ref this.primary, value);
-        }
-
-        public string Version => VersionTracking.CurrentVersion;
+        private string title = string.Empty;
 
         public BaseViewModel()
         {
@@ -65,6 +48,34 @@ namespace PracticeRecord.ViewModels
             }
         }
 
+        public IDataStore<PracticeItem> DataStore => DependencyService.Get<IDataStore<PracticeItem>>();
+
+        public bool IsBusy
+        {
+            get => this.isBusy;
+            set => this.SetProperty(ref this.isBusy, value);
+        }
+
+        public Color Done
+        {
+            get => this.done;
+            set => this.SetProperty(ref this.done, value);
+        }
+
+        public Color NotDone
+        {
+            get => this.notDone;
+            set => this.SetProperty(ref this.notDone, value);
+        }
+
+        public Color Primary
+        {
+            get => this.primary;
+            set => this.SetProperty(ref this.primary, value);
+        }
+
+        public string Version => VersionTracking.CurrentVersion;
+
         public string Title
         {
             get => this.title;
@@ -72,8 +83,8 @@ namespace PracticeRecord.ViewModels
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value,
-            [CallerMemberName] string propertyName = "",
-            Action onChanged = null)
+                                      [CallerMemberName] string propertyName = "",
+                                      Action onChanged = null)
         {
             if (EqualityComparer<T>.Default.Equals(backingStore, value))
             {
@@ -86,16 +97,18 @@ namespace PracticeRecord.ViewModels
             return true;
         }
 
-        #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            var changed = PropertyChanged;
+            var changed = this.PropertyChanged;
             if (changed == null)
+            {
                 return;
+            }
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
+
     }
 }
