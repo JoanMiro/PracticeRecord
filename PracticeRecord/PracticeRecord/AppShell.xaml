@@ -34,9 +34,13 @@
 
     <TabBar>
         <ShellContent Title="Record" Icon="tab_record.png" Route="PracticeRecordPage" ContentTemplate="{DataTemplate local:PracticeRecordPage}" />
-        <ShellContent Title="Randomiser" Icon="tab_practice.png" ContentTemplate="{DataTemplate local:RepertoireRandomiserPage}" />
-        <ShellContent Title="History" Icon="tab_history.png" ContentTemplate="{DataTemplate local:PracticeHistoryPage}" />
-        <ShellContent Title="Sheets" Icon="tab_about.png" ContentTemplate="{DataTemplate local:CheatSheetsPage}" />
+        <ShellContent Title="Randomiser" Icon="tab_randomiser.png" Route="RepertoireRandomiserPage" ContentTemplate="{DataTemplate local:RepertoireRandomiserPage}" />
+        <ShellContent Title="Chords" Icon="tab_practice.png" Route="ChordKeyboardPage" ContentTemplate="{DataTemplate local:ChordKeyboardPage}" />
+        <ShellContent Title="Scales" Icon="tab_practice.png" Route="ScaleKeyboardPage" ContentTemplate="{DataTemplate local:ScaleKeyboardPage}" />
+        <ShellContent Title="Finder" Icon="tab_finder.png" Route="ChordFinderKeyboardPage" ContentTemplate="{DataTemplate local:ChordFinderKeyboardPage}" />
+        <ShellContent Title="Settings" Icon="tab_about.png" Route="SettingsPage" ContentTemplate="{DataTemplate local:SettingsPage}" />
+        <ShellContent Title="Sheets" Icon="tab_about.png" Route="CheatSheetsPage" ContentTemplate="{DataTemplate local:CheatSheetsPage}" />
+        <ShellContent Title="History" Icon="tab_history.png" Route="PracticeHistoryPage" ContentTemplate="{DataTemplate local:PracticeHistoryPage}" />
     </TabBar>
 
     <!--
