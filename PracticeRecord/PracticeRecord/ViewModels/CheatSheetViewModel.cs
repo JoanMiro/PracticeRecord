@@ -20,7 +20,9 @@ namespace PracticeRecord.ViewModels
                 ImageSource.FromResource("PracticeRecord.Images.MajorScales.png"),
                 ImageSource.FromResource("PracticeRecord.Images.MinorScales.png"),
                 ImageSource.FromResource("PracticeRecord.Images.key_signatures_chart.png"),
-                ImageSource.FromResource("PracticeRecord.Images.music-key-signatures.png")
+                ImageSource.FromResource("PracticeRecord.Images.music-key-signatures.png"),
+                ImageSource.FromResource("PracticeRecord.Images.TheReallyUsefulPosterCompanyChordProgressions.png"),
+                ImageSource.FromResource("PracticeRecord.Images.TheReallyUsefulPosterCompanyPiano.png")
             };
         }
 

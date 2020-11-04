@@ -15,9 +15,12 @@
     <None Remove="Images\CircleOfFifths_WithRelativeMinorKeys.png" />
     <None Remove="Images\key_signatures_chart.png" />
     <None Remove="Images\MajorScales.png" />
+    <None Remove="Images\MajorScales.png~RF4104bbc.TMP" />
     <None Remove="Images\MinorScales.png" />
     <None Remove="Images\music-key-signatures.png" />
     <None Remove="Images\music-key-signatures2.png" />
+    <None Remove="Images\TheReallyUsefulPosterCompanyChordProgressions.png" />
+    <None Remove="Images\TheReallyUsefulPosterCompanyPiano.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +32,8 @@
     <EmbeddedResource Include="Images\MajorScales.png" />
     <EmbeddedResource Include="Images\MinorScales.png" />
     <EmbeddedResource Include="Images\music-key-signatures.png" />
+    <EmbeddedResource Include="Images\TheReallyUsefulPosterCompanyChordProgressions.png" />
+    <EmbeddedResource Include="Images\TheReallyUsefulPosterCompanyPiano.png" />
   </ItemGroup>
 
   <ItemGroup>

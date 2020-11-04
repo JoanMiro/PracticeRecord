@@ -30,17 +30,21 @@
         <pinch:PinchZoom BackgroundColor="LightGray" HorizontalOptions="Fill" VerticalOptions="Fill">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" x:Name="CircleImage" Source="{Binding Images[0]}"  />
-                <Image Grid.Column="1" x:Name="MajorImage" Source="{Binding Images[1]}" />
-                <Image Grid.Column="2" x:Name="MinorImage" Source="{Binding Images[2]}" />
-                <Image Grid.Column="3" x:Name="KeySig1" Source="{Binding Images[3]}" />
-                <Image Grid.Column="4" x:Name="KeySig2" Source="{Binding Images[4]}" />
+                <Image Grid.Column="0" Grid.Row="0" x:Name="CircleImage" Source="{Binding Images[0]}"  />
+                <Image Grid.Column="1" Grid.Row="0" x:Name="MajorImage" Source="{Binding Images[1]}" />
+                <Image Grid.Column="2" Grid.Row="0" x:Name="MinorImage" Source="{Binding Images[2]}" />
+                <Image Grid.Column="3" Grid.Row="0" x:Name="KeySig1" Source="{Binding Images[3]}" />
+                <Image Grid.Column="4" Grid.Row="0" x:Name="KeySig2" Source="{Binding Images[4]}" />
+                <Image Grid.Column="5" Grid.Row="0" x:Name="ReallyUseful1" Source="{Binding Images[5]}" />
+                <Image Grid.Column="6" Grid.Row="0" x:Name="ReallyUseful2" Source="{Binding Images[6]}" />
             </Grid>
         </pinch:PinchZoom>
     </ScrollView>
