@@ -10,7 +10,6 @@
     using System.IO;
     using System.Linq;
     using System.Net.Http;
-    using System.Threading.Tasks;
     using Xamarin.Forms;
 
     public class DropboxAccess
@@ -20,14 +19,16 @@
 
         private readonly string folderPath;
         private readonly string databaseName;
-        private string databaseFullPath;
+        private readonly string repertoireJsonName;
+        private readonly string databaseFullPath;
 
 
-        public DropboxAccess(string folderPath, string databaseName)
+        public DropboxAccess(string folderPath, string databaseName = "PracticeRecord.db3", string repertoireJsonName = "GlassPieces.json")
         {
             this.folderPath = folderPath;
             this.databaseName = databaseName;
-            this. databaseFullPath = Path.Combine(folderPath, databaseName);
+            this.repertoireJsonName = repertoireJsonName;
+            this.databaseFullPath = Path.Combine(folderPath, databaseName);
             this.LocalUpdateTime = File.GetLastWriteTime(this.databaseFullPath).ToUniversalTime();
         }
 
@@ -62,19 +63,35 @@
             return false;
         }
 
+        public List<GlassPiece> FetchGlassPiecesFile()
+        {
+            try
+            {
+                using var dropboxClient = GetClient();
+                var downloadResponse = dropboxClient.Files.DownloadAsync($"/{this.repertoireJsonName}").Result;
+                var content = downloadResponse.GetContentAsStringAsync().Result;
+                return JsonConvert.DeserializeObject<List<GlassPiece>>(content);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
+
+            return null;
+        }
+
         public bool SaveDatabaseFile()
         {
             try
             {
                 var fileList = Directory.EnumerateFiles(this.folderPath);
                 var enumerable = fileList as string[] ?? fileList.ToArray();
-                Debug.WriteLine(enumerable.Length);
-                var fileName = enumerable.First(x => x.Contains("PracticeRecord.db3"));
+                var fileName = enumerable.First(x => x.Contains(this.databaseName));
                 using var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
                 using var dropboxClient = GetClient();
                 var success =
                     dropboxClient.Files.UploadAsync(
-                        $"/{this.databaseName}", // /PracticeRecord/
+                        $"/{this.databaseName}", 
                         WriteMode.Overwrite.Instance,
                         body: fileStream).Result;
 
@@ -89,22 +106,21 @@
             return false;
         }
 
-        public List<PracticeItem> DownloadSerializedFile()
-        {
-            using var dropboxClient = GetClient();
-            var downloadResponse = dropboxClient.Files.DownloadAsync("/practiceRecord.txt").Result;
-            var content = downloadResponse.GetContentAsStringAsync().Result;
-            return JsonConvert.DeserializeObject<List<PracticeItem>>(content);
-        }
 
-        public void UploadSerializedFile(List<PracticeItem> practiceItems)
+        public void SaveGlassPiecesFile(List<GlassPiece> practiceItems)
         {
             var payload = JsonConvert.SerializeObject(practiceItems, Formatting.None);
-
-            using var fileStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(payload));
-            using var dropboxClient = GetClient();
-            var success = dropboxClient.Files.UploadAsync("/practiceRecord.txt", WriteMode.Overwrite.Instance, body: fileStream).Result;
-            Debug.WriteLine(success.IsFile);
+            try
+            {
+                using var fileStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(payload));
+                using var dropboxClient = GetClient();
+                var success = dropboxClient.Files.UploadAsync($"/{this.repertoireJsonName}", WriteMode.Overwrite.Instance, body: fileStream).Result;
+                Debug.WriteLine(success.IsFile);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
         }
 
         private static DropboxClient GetClient()

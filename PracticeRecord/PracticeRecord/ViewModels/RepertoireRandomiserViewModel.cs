@@ -3,6 +3,8 @@ using Xamarin.Forms;
 
 namespace PracticeRecord.ViewModels
 {
+    using Services;
+
     public class RepertoireRandomiserViewModel : BaseViewModel
     {
         private readonly PieceRandomiser pieceRandomiser;
