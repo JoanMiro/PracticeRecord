@@ -25,7 +25,7 @@
         {
             var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             this.DatabasePath = Path.Combine(folderPath, DatabaseName);
-            this.dropboxAccess = new DropboxAccess(folderPath, DatabaseName);
+            this.dropboxAccess = new DropboxAccess(folderPath);
 
             this.PracticeItemDataStore = new PracticeItemDataStore(this.DatabasePath);
             this.RefreshPracticeItems();

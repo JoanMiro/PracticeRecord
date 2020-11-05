@@ -1,6 +1,7 @@
 ﻿namespace PracticeRecord.Extensions
 {
     using System;
+    using Services;
     using Xamarin.Forms;
 
     public static class ColourExtensions
@@ -20,7 +21,6 @@
                 Convert.ToDouble(elements[0].Split('=')[1]));
 
             return colour;
-            //return Color.PaleGoldenrod;
         }
     }
 }

@@ -4,7 +4,7 @@
 //
 //------------------------------------------------------------------
 
-namespace PracticeRecord
+namespace PracticeRecord.Services
 {
     using System.Collections.Generic;
     using System.Reflection;
