@@ -206,6 +206,15 @@
   <ItemGroup>
     <BundleResource Include="Resources\tab_gear%402x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_chord.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_chord%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_chord%403x.png" />
+  </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties XamarinHotReloadDebuggerTimeoutExceptionPracticeRecordiOSHideInfoBar="True" />
