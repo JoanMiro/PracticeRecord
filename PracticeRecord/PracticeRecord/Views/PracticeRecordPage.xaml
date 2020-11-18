@@ -32,12 +32,13 @@
                 <Setter Property="HorizontalOptions" Value="StartAndExpand" />
             </Style>
             <Style x:Key="WeekLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource Primary}" />
                 <Setter Property="VerticalOptions" Value="FillAndExpand" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="FontAttributes" Value="Bold" />
             </Style>
             <Style x:Key="CurrentWeekLabel" TargetType="Label" BasedOn="{StaticResource WeekLabel}">
-                <Setter Property="TextColor" Value="DarkOrange" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource Highlight}" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -58,11 +59,19 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Text="Date:" />
+            <Label Grid.Row="0" Grid.Column="0" Text="Date:" TextColor="{StaticResource Primary}" />
             <DatePicker x:Name="CurrentDatePicker" Grid.Row="0" Grid.Column="1" Margin="5,0,20,0" Format="dd-MMM-yyyy" Date="{Binding CurrentDate}" />
-            <StackLayout Grid.ColumnSpan="3" Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
-                <Label Text="Period Started:" HorizontalOptions="Start"/>
-                <Label Text="{Binding PeriodStartDate, StringFormat='{0:dd-MMM-yyyy}'}" />
+            <StackLayout Grid.ColumnSpan="3" Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span TextColor="{StaticResource Primary}" Text="Period:  " />
+                            <Span TextColor="{StaticResource Highlight}" FontAttributes="Bold" Text="{Binding PeriodStartDate, StringFormat='{0:dd-MMM-yyyy}'}" />
+                            <Span Text=" to " />
+                            <Span TextColor="{StaticResource Highlight}" FontAttributes="Bold" Text="{Binding PeriodEndDate, StringFormat='{0:dd-MMM-yyyy}'}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </StackLayout>
         </Grid>
         <ScrollView Grid.Row="2">
