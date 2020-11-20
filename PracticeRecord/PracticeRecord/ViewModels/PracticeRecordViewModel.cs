@@ -14,6 +14,8 @@
     {
         private DateTime currentDate;
         private DateTime periodStartDate;
+        private const int PeriodLengthDays = 84;
+
         public PracticeItem CurrentPeriodRecord => this.PracticeDataViewModel.PracticeItems.OrderByDescending(i => i.CycleStartDate).First();
 
         public PracticeRecordViewModel()
@@ -45,7 +47,7 @@
         private void RefreshDoneCollection()
         {
             this.DoneCollection.Clear();
-            for (var colorIndex = 0; colorIndex < 84; colorIndex++)
+            for (var colorIndex = 0; colorIndex < PeriodLengthDays; colorIndex++)
             {
                 this.DoneCollection.Add(this.CurrentPeriodRecord.SerializedRecord[colorIndex] == '1' ? this.Done : this.NotDone);
             }
@@ -68,7 +70,7 @@
 
         private async Task CheckForNewPeriod()
         {
-            var nextPeriodStartDate = this.CurrentPeriodRecord.CycleStartDate.AddDays(84);
+            var nextPeriodStartDate = this.CurrentPeriodRecord.CycleStartDate.AddDays(PeriodLengthDays);
             if (nextPeriodStartDate.Date <= this.CurrentDate.Date)
             {
                 // create new cycle...
@@ -82,6 +84,8 @@
             get => this.periodStartDate;
             set => this.SetProperty(ref this.periodStartDate, value);
         }
+
+        public DateTime PeriodEndDate => this.periodStartDate.Date.AddDays(PeriodLengthDays - 1);
 
         public DateTime CurrentDate
         {

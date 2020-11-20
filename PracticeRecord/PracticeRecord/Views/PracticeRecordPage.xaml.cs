@@ -61,12 +61,12 @@ namespace PracticeRecord.Views
         {
             if (this.labels != null)
             {
-                for (var labelIndex = 0; labelIndex < 12; labelIndex++)
+                for (var labelIndex = 0; labelIndex <= 12; labelIndex++)
                 {
                     this.labels[labelIndex].Style = labelIndex == this.ViewModel.WeekOffset ? this.CurrentWeekStyle : this.WeekStyle;
                 }
 
-                for (var labelIndex = 12; labelIndex < 23; labelIndex++)
+                for (var labelIndex = 12; labelIndex <= 23; labelIndex++)
                 {
                     this.labels[labelIndex].Style = labelIndex - 12 == this.ViewModel.WeekOffset ? this.CurrentWeekStyle : this.WeekStyle;
                 }
