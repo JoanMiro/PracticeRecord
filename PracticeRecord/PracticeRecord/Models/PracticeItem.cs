@@ -12,6 +12,8 @@ namespace PracticeRecord.Models
 
         public string SerializedRecord { get; set; }
 
+        public string SerializedPracticeSchedule { get; set; }
+
         [Ignore]
         public string Stats => this.PercentageStats();
     }

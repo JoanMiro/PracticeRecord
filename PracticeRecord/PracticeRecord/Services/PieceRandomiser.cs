@@ -55,5 +55,25 @@
             var index = this.random.Next(practiceList.Count);
             return practiceList[index].Title;
         }
+
+        public IEnumerable<GlassPiece> TakeRandom(int take)
+        {
+            //var random = new Random();
+            var available = this.Count();
+            var needed = take;
+            foreach (var item in this)
+            {
+                if (this.random.Next(available) < needed)
+                {
+                    needed--;
+                    yield return item;
+                    if (needed == 0)
+                    {
+                        break;
+                    }
+                }
+                available--;
+            }
+        }
     }
 }

@@ -73,7 +73,7 @@ namespace PracticeRecord.Views
             }
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private void PracticeCompleteBox_Tapped(object sender, EventArgs e)
         {
             var index = this.boxViews.IndexOf(sender as BoxView);
             if (this.ViewModel.PeriodStartDate.AddDays(index) <= this.ViewModel.CurrentDate)

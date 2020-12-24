@@ -11,6 +11,16 @@ namespace PracticeRecord.Models
     [Table("settings")]
     public class Settings
     {
+        public Settings()
+        {
+            this.BlackKeySelectedChordColour = "Red";
+            this.BlackKeySelectedFinderColour = "Green";
+            this.BlackKeySelectedScaleColour = "Blue";
+            this.WhiteKeySelectedChordColour = "Pink";
+            this.WhiteKeySelectedFinderColour = "LightGreen";
+            this.WhiteKeySelectedScaleColour = "LightBlue";
+        }
+
         [PrimaryKey]
         public int Id { get; set; }
 

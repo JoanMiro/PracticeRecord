@@ -20,10 +20,12 @@ namespace PracticeRecord.Services
             this.databaseFilePath = databaseFilePath;
             this.OpenConnection();
             var result = this.databaseConnection.CreateTableAsync<PracticeItem>().Result;
-            Debug.WriteLine(result);
+            
+            //this.SeedHistory(new PieceRandomiser());
+            
             if (this.GetItemsAsync().Result.ToList().Count == 0)
             {
-                this.SeedHistory();
+                this.SeedHistory(new PieceRandomiser());
             }
 
             // this.FileDump();
@@ -65,8 +67,14 @@ namespace PracticeRecord.Services
             //return await this.databaseConnection.Table<PracticeItem>().ToListAsync();
         }
 
-        private void SeedHistory()
+        private void SeedHistory(PieceRandomiser pieceRandomiser)
         {
+            var items = this.GetItemsAsync().Result.ToArray();
+            for (var i = 0; i < items.Count(); i++)
+            {
+                _ = this.DeleteItemAsync(i);
+            }
+
             for (var historyPeriodIndex = 0; historyPeriodIndex < 3; historyPeriodIndex++)
             {
                 var historyStartDate = new DateTime(2020, 1, 20).AddDays(84 * historyPeriodIndex);
@@ -74,7 +82,8 @@ namespace PracticeRecord.Services
                     new PracticeItem
                     {
                         CycleStartDate = historyStartDate,
-                        SerializedRecord = new string('1', 84)
+                        SerializedRecord = new string('1', 84),
+                        SerializedPracticeSchedule = string.Join(",",pieceRandomiser.TakeRandom(12))
                     }).Result;
             }
 
@@ -83,7 +92,8 @@ namespace PracticeRecord.Services
                 new PracticeItem
                 {
                     CycleStartDate = startDate,
-                    SerializedRecord = new string('0', 84)
+                    SerializedRecord = new string('0', 84),
+                    SerializedPracticeSchedule = string.Join(",", pieceRandomiser.TakeRandom(12))
                 }).Result;
 
 

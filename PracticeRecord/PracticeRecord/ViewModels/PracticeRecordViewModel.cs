@@ -70,12 +70,20 @@
 
         private async Task CheckForNewPeriod()
         {
-            var nextPeriodStartDate = this.CurrentPeriodRecord.CycleStartDate.AddDays(PeriodLengthDays);
+            var nextPeriodStartDate = this.CurrentPeriodRecord.CycleStartDate.AddDays(84);
+
             if (nextPeriodStartDate.Date <= this.CurrentDate.Date)
             {
-                // create new cycle...
-                var newCurrentPeriodRecord = new PracticeItem { CycleStartDate = nextPeriodStartDate };
-                await this.PracticeDataViewModel.PracticeItemDataStore.AddItemAsync(newCurrentPeriodRecord);
+                var pieceRandomiser = new PieceRandomiser();
+                var practiceSchedule = pieceRandomiser.TakeRandom(12).Select(piece => piece.Title);
+                var newCurrentPeriodRecord = new PracticeItem
+                {
+                    CycleStartDate = nextPeriodStartDate,
+                    SerializedRecord = new string('0',84),
+                    SerializedPracticeSchedule = string.Join(",", practiceSchedule)
+                };
+
+                await this.PracticeDataViewModel.PracticeItemDataStore.AddItemAsync(newCurrentPeriodRecord).ConfigureAwait(false);
             }
         }
 
@@ -101,6 +109,10 @@
 
         public bool DayIsDone => this.DoneCollection[this.DaysOffSet] == this.Done;
 
+        public string WeeklyPracticePiece => this.CurrentPeriodRecord.SerializedPracticeSchedule.Split(',')[this.WeekOffset%12];
+
+        public ImageSource InfoImage => ImageSource.FromResource("PracticeRecord.Images.tab_about.png");
+        
         private void UpdateDoneDatabaseRecord()
         {
             this.CurrentPeriodRecord.SerializedRecord = new string(this.DoneCollection.Select(color => color == this.NotDone ? '0' : '1').ToArray());

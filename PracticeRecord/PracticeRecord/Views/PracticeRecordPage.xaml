@@ -91,6 +91,7 @@
                     <RowDefinition Height="26" />
                     <RowDefinition Height="26" />
                     <RowDefinition Height="26" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="90" />
@@ -137,424 +138,434 @@
 
                 <BoxView Grid.Row="1" Grid.Column="2">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="1" Grid.Column="3">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="1" Grid.Column="4">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="1" Grid.Column="5">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="1" Grid.Column="6">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="1" Grid.Column="7">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="1" Grid.Column="8">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="2" Grid.Column="2">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="2" Grid.Column="3">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="2" Grid.Column="4">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="2" Grid.Column="5">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="2" Grid.Column="6">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="2" Grid.Column="7">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="2" Grid.Column="8">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="3" Grid.Column="2">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="3" Grid.Column="3">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="3" Grid.Column="4">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="3" Grid.Column="5">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="3" Grid.Column="6">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="3" Grid.Column="7">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="3" Grid.Column="8">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="4" Grid.Column="2">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="4" Grid.Column="3">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="4" Grid.Column="4">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="4" Grid.Column="5">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="4" Grid.Column="6">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="4" Grid.Column="7">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="4" Grid.Column="8">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="5" Grid.Column="2">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="5" Grid.Column="3">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="5" Grid.Column="4">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="5" Grid.Column="5">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="5" Grid.Column="6">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="5" Grid.Column="7">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="5" Grid.Column="8">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="6" Grid.Column="2">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="6" Grid.Column="3">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="6" Grid.Column="4">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="6" Grid.Column="5">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="6" Grid.Column="6">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="6" Grid.Column="7">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="6" Grid.Column="8">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="7" Grid.Column="2">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="7" Grid.Column="3">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="7" Grid.Column="4">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="7" Grid.Column="5">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="7" Grid.Column="6">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="7" Grid.Column="7">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="7" Grid.Column="8">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="8" Grid.Column="2">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="8" Grid.Column="3">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="8" Grid.Column="4">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="8" Grid.Column="5">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="8" Grid.Column="6">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="8" Grid.Column="7">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="8" Grid.Column="8">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="9" Grid.Column="2">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="9" Grid.Column="3">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="9" Grid.Column="4">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="9" Grid.Column="5">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="9" Grid.Column="6">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="9" Grid.Column="7">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="9" Grid.Column="8">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="10" Grid.Column="2">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="10" Grid.Column="3">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="10" Grid.Column="4">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="10" Grid.Column="5">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="10" Grid.Column="6">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="10" Grid.Column="7">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="10" Grid.Column="8">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="11" Grid.Column="2">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="11" Grid.Column="3">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="11" Grid.Column="4">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="11" Grid.Column="5">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="11" Grid.Column="6">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="11" Grid.Column="7">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="11" Grid.Column="8">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="12" Grid.Column="2">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="12" Grid.Column="3">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="12" Grid.Column="4">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="12" Grid.Column="5">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="12" Grid.Column="6">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="12" Grid.Column="7">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
                 <BoxView Grid.Row="12" Grid.Column="8">
                     <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="PracticeCompleteBox_Tapped"/>
                     </BoxView.GestureRecognizers>
                 </BoxView>
+                <StackLayout Grid.Row="13" Grid.Column="0" Margin="0,20,0,0" Grid.ColumnSpan="9" VerticalOptions="EndAndExpand">
+                    <Label VerticalOptions="EndAndExpand">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span TextColor="{StaticResource Primary}" Text="Weekly Piece:  " />
+                                <Span TextColor="{StaticResource Highlight}" FontAttributes="Bold" Text="{Binding WeeklyPracticePiece}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
             </Grid>
 
         </ScrollView>

@@ -55,16 +55,18 @@
 
         public async Task<Settings> GetSettings()
         {
+            var settings = new Settings();
             try
             {
-                return await this.connection.Table<Settings>().FirstOrDefaultAsync();
+                settings = await this.connection.Table<Settings>().FirstOrDefaultAsync();
             }
             catch (Exception exception)
             {
                 this.StatusMessage = $"Failed to retrieve data. {exception.Message}";
+                
             }
 
-            return new Settings();
+            return settings ?? new Settings();
         }
     }
 }
