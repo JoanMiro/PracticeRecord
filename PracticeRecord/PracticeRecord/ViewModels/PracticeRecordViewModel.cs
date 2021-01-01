@@ -101,8 +101,8 @@
             set => this.SetProperty(ref this.currentDate, value);
         }
 
-        public int DaysOffSet => this.CurrentDate.DayOfYear - this.PeriodStartDate.DayOfYear;
-        
+        public int DaysOffSet => (this.CurrentDate - this.PeriodStartDate).Days;
+
         public int WeekOffset => this.DaysOffSet / 7;
 
         public ObservableCollection<Color> DoneCollection { get; } = new ObservableCollection<Color>();
