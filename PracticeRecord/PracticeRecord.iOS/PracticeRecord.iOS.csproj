@@ -70,6 +70,7 @@
     <MtouchLink>None</MtouchLink>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AudioPlayer.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -215,9 +216,117 @@
   <ItemGroup>
     <BundleResource Include="Resources\tab_chord%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_A3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_A4.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_A5.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_AB3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_AB4.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_AB5.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_B3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_B4.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_B5.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_BB3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_BB4.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_BB5.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_C3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_C4.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_C5.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_D3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_D4.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_D5.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_DB3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_DB4.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_DB5.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_E3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_E4.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_E5.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_EB3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_EB4.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_EB5.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_F3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_F4.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_F5.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_G3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_G4.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_G5.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_GB3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_GB4.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PIANO_MED_GB5.wav" />
+  </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties XamarinHotReloadDebuggerTimeoutExceptionPracticeRecordiOSHideInfoBar="True" TriggeredFromHotReload="False" />
+      <UserProperties TriggeredFromHotReload="False" XamarinHotReloadDebuggerTimeoutExceptionPracticeRecordiOSHideInfoBar="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
