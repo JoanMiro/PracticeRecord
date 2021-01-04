@@ -73,6 +73,7 @@
                              Orientation="Horizontal">
                     <Label Text="Play Chords/Scales?" VerticalOptions="Center" />
                     <Switch Margin="10,0,0,0"
+                            x:Name="AudioIsEnabledSwitch"
                             IsToggled="{Binding AudioIsEnabled}"
                             VerticalOptions="Center" />
                 </StackLayout>
@@ -80,6 +81,7 @@
                              Orientation="Horizontal">
                     <Label Text="Arpeggiate?" VerticalOptions="Center" />
                     <Switch Margin="10,0,0,0"
+                            x:Name="ArpeggiateIsEnabledSwitch"
                             IsEnabled="{Binding AudioIsEnabled}"
                             IsToggled="{Binding ArpeggiateIsEnabled}"
                             VerticalOptions="Center" />
