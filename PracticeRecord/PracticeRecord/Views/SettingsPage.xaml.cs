@@ -25,6 +25,8 @@ namespace PracticeRecord.Views
             this.WhiteScaleColourPicker.Color = this.CurrentApp.SettingsViewModel.WhiteKeySelectedScaleColour;
             this.BlackFinderColourPicker.Color = this.CurrentApp.SettingsViewModel.BlackKeySelectedFinderColour;
             this.WhiteFinderColourPicker.Color = this.CurrentApp.SettingsViewModel.WhiteKeySelectedFinderColour;
+            this.AudioIsEnabledSwitch.IsToggled = this.CurrentApp.SettingsViewModel.AudioIsEnabled;
+            this.ArpeggiateIsEnabledSwitch.IsToggled = this.CurrentApp.SettingsViewModel.ArpeggiateIsEnabled;
 
             this.BlackChordColourPicker.PropertyChanged += this.BlackChordColourPickerPropertyChanged;
             this.WhiteChordColourPicker.PropertyChanged += this.WhiteChordColourPickerPropertyChanged;
@@ -32,6 +34,18 @@ namespace PracticeRecord.Views
             this.WhiteScaleColourPicker.PropertyChanged += this.WhiteScaleColourPickerPropertyChanged;
             this.BlackFinderColourPicker.PropertyChanged += this.BlackFinderColourPickerPropertyChanged;
             this.WhiteFinderColourPicker.PropertyChanged += this.WhiteFinderColourPickerPropertyChanged;
+            this.AudioIsEnabledSwitch.PropertyChanged += this.AudioIsEnabledSwitchPropertyChanged;
+            this.ArpeggiateIsEnabledSwitch.PropertyChanged += this.ArpeggiateIsEnabledSwitchPropertyChanged;
+        }
+
+        private void ArpeggiateIsEnabledSwitchPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            this.CurrentApp.SettingsViewModel.ArpeggiateIsEnabled = this.ArpeggiateIsEnabledSwitch.IsToggled;
+        }
+
+        private void AudioIsEnabledSwitchPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            this.CurrentApp.SettingsViewModel.AudioIsEnabled = this.AudioIsEnabledSwitch.IsToggled;
         }
 
         private void WhiteFinderColourPickerPropertyChanged(object sender, PropertyChangedEventArgs e)

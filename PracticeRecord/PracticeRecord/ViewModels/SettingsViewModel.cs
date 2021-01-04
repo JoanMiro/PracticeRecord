@@ -18,10 +18,10 @@ namespace PracticeRecord.ViewModels
         public SettingsViewModel(ISettingsRepository settingsRepository)
         {
             this.settingsRepository = settingsRepository;
-            Task.Run(this.RetrieveColourProperties);
+            Task.Run(this.RetrieveSettingsProperties);
         }
 
-        private async void RetrieveColourProperties()
+        private async void RetrieveSettingsProperties()
         {
             var settings = await this.settingsRepository.GetSettings();
             this.blackKeySelectedChordColour = settings.BlackKeySelectedChordColour.ToColour();
@@ -30,6 +30,8 @@ namespace PracticeRecord.ViewModels
             this.whiteKeySelectedChordColour = settings.WhiteKeySelectedChordColour.ToColour();
             this.whiteKeySelectedFinderColour = settings.WhiteKeySelectedFinderColour.ToColour();
             this.whiteKeySelectedScaleColour = settings.WhiteKeySelectedScaleColour.ToColour();
+            this.arpeggiateIsEnabled = settings.ArpeggiateChord;
+            this.audioIsEnabled = settings.PlaySelection;
         }
 
         private bool arpeggiateIsEnabled;
