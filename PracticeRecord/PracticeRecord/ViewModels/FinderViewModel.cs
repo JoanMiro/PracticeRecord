@@ -6,12 +6,12 @@
 
 namespace PracticeRecord.ViewModels
 {
+    using Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Windows.Input;
-    using Models;
     using Xamarin.Forms;
 
     public class FinderViewModel : BaseViewModel
@@ -34,7 +34,13 @@ namespace PracticeRecord.ViewModels
             this.Title = "Chord Finder";
             this.FinderKeyboardTappedCommand = new Command(this.OnFinderKeyboardTapped);
             this.selectedInversion = this.Inversions[0];
+            this.ResetFinderChord();
+        }
+
+        public void ResetFinderChord()
+        {
             this.FinderChord = Chord.Create("Mystery Chord", new List<int>());
+            this.FindChord();
         }
 
         public Inversion SelectedInversion
@@ -114,7 +120,7 @@ namespace PracticeRecord.ViewModels
                         chordNoteNames.Append(this.noteNames[(note + this.FinderRootNoteOffset) % 12] + " ");
                     }
 
-                    var inversionInfo = this.SelectedInversion.Value > 0  ? this.SelectedInversion.Description : string.Empty;
+                    var inversionInfo = this.SelectedInversion.Value > 0 ? this.SelectedInversion.Description : string.Empty;
                     ////return $"{this.noteNames[this.ChordRootNoteOffset]} {this.FinderChord.Description} [{chordNoteNames.ToString().TrimEnd('+')}]";
                     return $"[{chordNoteNames.ToString().Trim()}] {inversionInfo}";
                 }
@@ -176,7 +182,13 @@ namespace PracticeRecord.ViewModels
                 {
                     if (inversionNotes.Length > inversionNote && inversionNotes[inversionNotes.Length - 1 - inversionNote] >= 12)
                     {
-                        inversionNotes[inversionNotes.Length - 1 - inversionNote] -= 12;
+                        var shiftedNote = inversionNotes[inversionNotes.Length - 1 - inversionNote] - 12;
+                        if (inversionNotes.Contains(shiftedNote))
+                        {
+                            inversionNotes = inversionNotes.Where(note => note != shiftedNote).Select(x => x).ToArray();
+                        }
+
+                        inversionNotes[inversionNotes.Length - 1 - inversionNote] = shiftedNote;
                         this.SelectedInversion = this.Inversions.First(i => i.Value == inversion);
                     }
                 }
@@ -190,7 +202,7 @@ namespace PracticeRecord.ViewModels
             {
                 foreach (var chordNote in inversionNotes)
                 {
-                    if (!chord.Notes.Contains((chordNote - finderRootOffset) % 12))
+                    if (!chord.Notes.Contains(chordNote - finderRootOffset))
                     {
                         chordFound = false;
                         break;
@@ -211,7 +223,7 @@ namespace PracticeRecord.ViewModels
             }
 
             // Not found - look for inversions...
-            if (chordFound == false && inversion < 3)
+            if (chordFound == false && inversionNotes.Length >= 3 && inversion < 3)
             {
                 this.FindChord(++inversion);
             }

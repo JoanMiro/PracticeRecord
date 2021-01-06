@@ -5,30 +5,29 @@
                            xmlns:views="clr-namespace:PracticeRecord.Views;assembly=PracticeRecord"
                            xmlns:viewModels="clr-namespace:PracticeRecord.ViewModels;assembly=PracticeRecord"
                            Title="{Binding Title}">
-    <ContentPage.BindingContext>
-        <viewModels:FinderViewModel />
-    </ContentPage.BindingContext>
 
     <!--<views:PinchToZoomContainer>
         <views:PinchToZoomContainer.Content>-->
+    <views:KeyboardContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="CornerRadius" Value="3" />
+                <Setter Property="BorderColor" Value="Black" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Padding" Value="0" />
+            </Style>
+        </ResourceDictionary>
+    </views:KeyboardContentPage.Resources>
     <ScrollView Margin="20,0,20,0">
         <FlexLayout Direction="Column">
 
             <StackLayout>
-                <Grid x:Name="KeyboardGrid" Margin="10,20" BackgroundColor="LightSlateGray" ColumnSpacing="0"
-                              HeightRequest="231" HorizontalOptions="StartAndExpand" MinimumHeightRequest="154" MinimumWidthRequest="693"
-                              RowSpacing="0" VerticalOptions="StartAndExpand" WidthRequest="693">
-                    <Grid.Resources>
-                        <ResourceDictionary>
-                            <Style TargetType="Button">
-                                <Setter Property="CornerRadius" Value="1" />
-                                <Setter Property="BorderColor" Value="Black" />
-                                <Setter Property="BorderWidth" Value="1" />
-                                <Setter Property="Margin" Value="0" />
-                                <Setter Property="Padding" Value="0" />
-                            </Style>
-                        </ResourceDictionary>
-                    </Grid.Resources>
+
+                <Grid x:Name="KeyboardGrid" Margin="10,20,10,5" BackgroundColor="LightSlateGray" ColumnSpacing="0"
+                      HeightRequest="231" HorizontalOptions="StartAndExpand" MinimumHeightRequest="154" MinimumWidthRequest="693"
+                      RowSpacing="0" VerticalOptions="StartAndExpand" WidthRequest="693">
+
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60*" />
                         <RowDefinition Height="40*" />
@@ -148,13 +147,21 @@
                     <Button x:Name="ChordKey22" Grid.Row="0" Grid.Column="51" Grid.ColumnSpan="2"
                                     BackgroundColor="Black" Clicked="ChordKey_OnClicked" TabIndex="22" TextColor="White" />
                 </Grid>
-
+                <Grid HorizontalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Text="Play"  Margin="10,0,0,20" FontSize="16" HeightRequest="25" WidthRequest="60" Clicked="PlayButton_OnClicked" HorizontalOptions="Start" VerticalOptions="EndAndExpand" />
+                    <Button Grid.Column="1" Text="Clear" Margin="0,0,10,20" FontSize="16" HeightRequest="25" WidthRequest="60" Clicked="ClearButton_OnClicked" HorizontalOptions="End" VerticalOptions="EndAndExpand"/>
+                </Grid>
             </StackLayout>
 
             <StackLayout>
                 <Label Margin="5,0,0,2" FontSize="28" HorizontalTextAlignment="Start"
                                Text="{Binding FoundChordFullName, StringFormat='Chord: {0}'}"
                                TextColor="Brown" VerticalTextAlignment="End" />
+
             </StackLayout>
         </FlexLayout>
     </ScrollView>
