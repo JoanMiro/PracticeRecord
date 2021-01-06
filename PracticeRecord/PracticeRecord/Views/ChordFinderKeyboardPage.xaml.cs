@@ -13,6 +13,7 @@ namespace PracticeRecord.Views
     using System.Threading.Tasks;
     using ViewModels;
     using Xamarin.Forms;
+    using Xamarin.Forms.Markup;
 
     public partial class ChordFinderKeyboardPage : KeyboardContentPage
     {
@@ -163,6 +164,8 @@ namespace PracticeRecord.Views
                         }
                     }
                 }
+
+                // this.AdjustZOrder();
             }
         }
 
@@ -175,6 +178,35 @@ namespace PracticeRecord.Views
                     .ConfigureAwait(false);
             }
         }
+        /*
+        private void AdjustZOrder()
+        {
+            //foreach (var anyButton in this.AllChordKeys)
+            //{
+            //    anyButton.Order(1);
+            //}
+
+            for (var keyIndex = 0; keyIndex < this.AllChordKeys.Count; keyIndex++)
+            {
+                if (!this.ChordBlackKeys.Contains(keyIndex))
+                {
+                    var tempColour = this.AllChordKeys[keyIndex].BorderColor;
+                    this.AllChordKeys[keyIndex].BorderColor = Color.PaleGoldenrod;
+                    this.AllChordKeys[keyIndex].BorderColor = tempColour;
+                }
+            }
+
+            for (var keyIndex = 0; keyIndex < this.AllChordKeys.Count; keyIndex++)
+            {
+                if (this.ChordBlackKeys.Contains(keyIndex))
+                {
+                    var tempColour = this.AllChordKeys[keyIndex].BorderColor;
+                    this.AllChordKeys[keyIndex].BorderColor = Color.PaleGoldenrod;
+                    this.AllChordKeys[keyIndex].BorderColor = tempColour;
+                }
+            }
+        }
+        */
 
         private void ChordKey_OnClicked(object sender, EventArgs e)
         {
@@ -183,6 +215,17 @@ namespace PracticeRecord.Views
                 this.FinderViewModel.FinderKeyboardTappedCommand.Execute($"Key{buttonSender.TabIndex}");
                 this.ShowChord();
             }
+        }
+
+        private void ClearButton_OnClicked(object sender, EventArgs e)
+        {
+            this.FinderViewModel.ResetFinderChord();
+            this.ShowChord();
+        }
+
+        private void PlayButton_OnClicked(object sender, EventArgs e)
+        {
+            this.PlayChord();
         }
     }
 }
