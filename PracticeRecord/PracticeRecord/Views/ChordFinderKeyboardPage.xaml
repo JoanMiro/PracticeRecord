@@ -152,7 +152,7 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Text="Play"  Margin="10,0,0,20" FontSize="16" HeightRequest="25" WidthRequest="60" Clicked="PlayButton_OnClicked" HorizontalOptions="Start" VerticalOptions="EndAndExpand" />
+                    <Button Grid.Column="0" Text="Play"  Margin="10,0,0,20" FontSize="16" HeightRequest="25" WidthRequest="60" Clicked="PlayButton_OnClicked" IsEnabled="{Binding FinderViewModel.Settings.AudioIsEnabled}" HorizontalOptions="Start" VerticalOptions="EndAndExpand" />
                     <Button Grid.Column="1" Text="Clear" Margin="0,0,10,20" FontSize="16" HeightRequest="25" WidthRequest="60" Clicked="ClearButton_OnClicked" HorizontalOptions="End" VerticalOptions="EndAndExpand"/>
                 </Grid>
             </StackLayout>

@@ -100,7 +100,7 @@ namespace PracticeRecord.ViewModels
                     }
 
                     var inversionInfo = this.SelectedInversion.Value > 0 ? this.SelectedInversion.Description : string.Empty;
-                    return $"{this.noteNames[this.FinderRootNoteOffset]} {this.IdentifiedChord.Description} [{chordNoteNames.ToString().TrimEnd('+')}] {inversionInfo}";
+                    return $"{this.noteNames[this.FinderRootNoteOffset]} {this.IdentifiedChord.Description} [{chordNoteNames.ToString().TrimEnd('+').Trim()}] {inversionInfo}";
                     ////return $"[{chordNoteNames.ToString().Trim()}] {inversionInfo}";
                 }
 
