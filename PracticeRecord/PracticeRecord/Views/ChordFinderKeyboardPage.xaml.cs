@@ -164,8 +164,6 @@ namespace PracticeRecord.Views
                         }
                     }
                 }
-
-                // this.AdjustZOrder();
             }
         }
 
@@ -173,40 +171,12 @@ namespace PracticeRecord.Views
         {
             if (this.CurrentApp.SettingsViewModel.AudioIsEnabled && this.FinderViewModel.IdentifiedChord != null)
             {
-                var actualChordNotes = this.GetActualNotes(this.FinderViewModel.IdentifiedChord.Notes, this.FinderViewModel.FinderRootNoteOffset);
+                // var actualChordNotes = this.GetActualNotes(this.FinderViewModel.IdentifiedChord.Notes, this.FinderViewModel.FinderRootNoteOffset);
+                var actualChordNotes = this.GetActualNotes(this.FinderViewModel.FinderChord.Notes, this.FinderViewModel.FinderRootNoteOffset);
                 Task.Run(() => { this.audioPlayer.PlayNotes(actualChordNotes, this.FinderViewModel.Settings.ArpeggiateIsEnabled); })
                     .ConfigureAwait(false);
             }
         }
-        /*
-        private void AdjustZOrder()
-        {
-            //foreach (var anyButton in this.AllChordKeys)
-            //{
-            //    anyButton.Order(1);
-            //}
-
-            for (var keyIndex = 0; keyIndex < this.AllChordKeys.Count; keyIndex++)
-            {
-                if (!this.ChordBlackKeys.Contains(keyIndex))
-                {
-                    var tempColour = this.AllChordKeys[keyIndex].BorderColor;
-                    this.AllChordKeys[keyIndex].BorderColor = Color.PaleGoldenrod;
-                    this.AllChordKeys[keyIndex].BorderColor = tempColour;
-                }
-            }
-
-            for (var keyIndex = 0; keyIndex < this.AllChordKeys.Count; keyIndex++)
-            {
-                if (this.ChordBlackKeys.Contains(keyIndex))
-                {
-                    var tempColour = this.AllChordKeys[keyIndex].BorderColor;
-                    this.AllChordKeys[keyIndex].BorderColor = Color.PaleGoldenrod;
-                    this.AllChordKeys[keyIndex].BorderColor = tempColour;
-                }
-            }
-        }
-        */
 
         private void ChordKey_OnClicked(object sender, EventArgs e)
         {
