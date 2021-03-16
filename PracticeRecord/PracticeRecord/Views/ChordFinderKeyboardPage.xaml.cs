@@ -13,7 +13,6 @@ namespace PracticeRecord.Views
     using System.Threading.Tasks;
     using ViewModels;
     using Xamarin.Forms;
-    using Xamarin.Forms.Markup;
 
     public partial class ChordFinderKeyboardPage : KeyboardContentPage
     {
