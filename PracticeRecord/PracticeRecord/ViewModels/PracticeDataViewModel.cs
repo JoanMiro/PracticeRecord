@@ -1,25 +1,20 @@
 ﻿namespace PracticeRecord.ViewModels
 {
-    using Data;
-    using Models;
-    using Services;
     using System;
     using System.Collections.ObjectModel;
     using System.IO;
     using System.Linq;
+    using Data;
+    using Models;
+    using Services;
     using Xamarin.Essentials;
 
     public class PracticeDataViewModel : BaseViewModel
     {
+        private const string DatabaseName = "PracticeRecord.db3";
         private readonly DropboxAccess dropboxAccess;
 
-        public PracticeItemDataStore PracticeItemDataStore { get; }
-
-        private const string DatabaseName = "PracticeRecord.db3";
-
-        public ObservableCollection<PracticeItem> PracticeItems { get; private set; }
-
-        public event EventHandler RecordUpdated;
+        private readonly ILogger logger;
 
         public PracticeDataViewModel()
         {
@@ -29,11 +24,18 @@
 
             this.PracticeItemDataStore = new PracticeItemDataStore(this.DatabasePath);
             this.RefreshPracticeItems();
+            this.logger = new DropboxLoggerService();
         }
-        
+
+        public PracticeItemDataStore PracticeItemDataStore { get; }
+
+        public ObservableCollection<PracticeItem> PracticeItems { get; private set; }
+
         public bool IsChangedLocally { get; set; }
 
         public string DatabasePath { get; set; }
+
+        public event EventHandler RecordUpdated;
 
         private void RefreshPracticeItems()
         {
@@ -43,7 +45,7 @@
         public void OnRecordUpdated()
         {
             this.PracticeItems = new ObservableCollection<PracticeItem>(this.PracticeItemDataStore.GetItemsAsync().Result.ToList());
-            RecordUpdated?.Invoke(this, null);
+            this.RecordUpdated?.Invoke(this, null);
         }
 
         public void RefreshState()
@@ -61,6 +63,7 @@
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
+                    this.logger.Error(e.Message);
                 }
             }
         }
@@ -77,6 +80,7 @@
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
+                    this.logger.Error(e.Message);
                 }
             }
         }

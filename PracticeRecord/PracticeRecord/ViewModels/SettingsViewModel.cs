@@ -15,25 +15,6 @@ namespace PracticeRecord.ViewModels
     {
         private readonly ISettingsRepository settingsRepository;
 
-        public SettingsViewModel(ISettingsRepository settingsRepository)
-        {
-            this.settingsRepository = settingsRepository;
-            Task.Run(this.RetrieveSettingsProperties);
-        }
-
-        private async void RetrieveSettingsProperties()
-        {
-            var settings = await this.settingsRepository.GetSettings();
-            this.blackKeySelectedChordColour = settings.BlackKeySelectedChordColour.ToColour();
-            this.blackKeySelectedFinderColour = settings.BlackKeySelectedFinderColour.ToColour();
-            this.blackKeySelectedScaleColour = settings.BlackKeySelectedScaleColour.ToColour();
-            this.whiteKeySelectedChordColour = settings.WhiteKeySelectedChordColour.ToColour();
-            this.whiteKeySelectedFinderColour = settings.WhiteKeySelectedFinderColour.ToColour();
-            this.whiteKeySelectedScaleColour = settings.WhiteKeySelectedScaleColour.ToColour();
-            this.arpeggiateIsEnabled = settings.ArpeggiateChord;
-            this.audioIsEnabled = settings.PlaySelection;
-        }
-
         private bool arpeggiateIsEnabled;
 
         private bool audioIsEnabled;
@@ -53,6 +34,12 @@ namespace PracticeRecord.ViewModels
         private Color whiteKeySelectedFinderColour = Color.PaleGoldenrod;
 
         private Color whiteKeySelectedScaleColour = Color.DarkSeaGreen;
+
+        public SettingsViewModel(ISettingsRepository settingsRepository)
+        {
+            this.settingsRepository = settingsRepository;
+            Task.Run(this.RetrieveSettingsProperties);
+        }
 
         public Color BlackKeyColour
         {
@@ -152,6 +139,19 @@ namespace PracticeRecord.ViewModels
                 this.arpeggiateIsEnabled = value;
                 this.OnPropertyChanged();
             }
+        }
+
+        private async void RetrieveSettingsProperties()
+        {
+            var settings = await this.settingsRepository.GetSettings();
+            this.blackKeySelectedChordColour = settings.BlackKeySelectedChordColour.ToColour();
+            this.blackKeySelectedFinderColour = settings.BlackKeySelectedFinderColour.ToColour();
+            this.blackKeySelectedScaleColour = settings.BlackKeySelectedScaleColour.ToColour();
+            this.whiteKeySelectedChordColour = settings.WhiteKeySelectedChordColour.ToColour();
+            this.whiteKeySelectedFinderColour = settings.WhiteKeySelectedFinderColour.ToColour();
+            this.whiteKeySelectedScaleColour = settings.WhiteKeySelectedScaleColour.ToColour();
+            this.arpeggiateIsEnabled = settings.ArpeggiateChord;
+            this.audioIsEnabled = settings.PlaySelection;
         }
 
         public void SetColourFromName(string propertyName, string colourName)

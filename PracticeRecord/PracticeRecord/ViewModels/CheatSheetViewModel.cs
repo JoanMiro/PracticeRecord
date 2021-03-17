@@ -6,6 +6,7 @@
 
 namespace PracticeRecord.ViewModels
 {
+    using Services;
     using System.Collections.ObjectModel;
     using Xamarin.Forms;
 

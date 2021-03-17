@@ -12,6 +12,7 @@ namespace PracticeRecord.ViewModels
     using System.Linq;
     using System.Text;
     using System.Windows.Input;
+    using Services;
     using Xamarin.Forms;
 
     public class FinderViewModel : BaseViewModel
