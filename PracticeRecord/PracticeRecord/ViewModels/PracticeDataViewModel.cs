@@ -8,26 +8,29 @@
     using Models;
     using Services;
     using Xamarin.Essentials;
+    using Xamarin.Forms;
 
     public class PracticeDataViewModel : BaseViewModel
     {
-        private const string DatabaseName = "PracticeRecord.db3";
         private readonly DropboxAccess dropboxAccess;
+
+        public PracticeItemDataStore PracticeItemDataStore { get; }
+
+        // private const string DatabaseName = "TestPracticeRecord.db3";
 
         private readonly ILogger logger;
 
         public PracticeDataViewModel()
         {
+            var databaseName = this.DefaultDatabaseName();
             var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            this.DatabasePath = Path.Combine(folderPath, DatabaseName);
+            this.DatabasePath = Path.Combine(folderPath, databaseName);
             this.dropboxAccess = new DropboxAccess(folderPath);
 
             this.PracticeItemDataStore = new PracticeItemDataStore(this.DatabasePath);
             this.RefreshPracticeItems();
             this.logger = new DropboxLoggerService();
         }
-
-        public PracticeItemDataStore PracticeItemDataStore { get; }
 
         public ObservableCollection<PracticeItem> PracticeItems { get; private set; }
 
@@ -83,6 +86,16 @@
                     this.logger.Error(e.Message);
                 }
             }
+        }
+
+        private string DefaultDatabaseName()
+        {
+            if (Application.Current is App currentApp)
+            {
+                return currentApp.DatabaseName;
+            }
+
+            throw new NullReferenceException("DatabaseName");
         }
     }
 }

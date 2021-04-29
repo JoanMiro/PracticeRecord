@@ -23,17 +23,24 @@
         private readonly string databaseFullPath;
 
 
-        public DropboxAccess(string folderPath, string databaseName = "PracticeRecord.db3", string repertoireJsonName = "GlassPieces.json")
+        public DropboxAccess(string folderPath, string databaseName = null, string repertoireJsonName = "GlassPieces.json")
         {
             this.folderPath = folderPath;
+            databaseName ??= this.DefaultDatabaseName();
             this.databaseName = databaseName;
             this.repertoireJsonName = repertoireJsonName;
             this.databaseFullPath = Path.Combine(folderPath, databaseName);
             this.LocalUpdateTime = File.GetLastWriteTime(this.databaseFullPath).ToUniversalTime();
         }
 
-        public DropboxAccess()
+        private string DefaultDatabaseName()
         {
+            if (Application.Current is App currentApp)
+            {
+                return currentApp.DatabaseName;
+            }
+
+            throw new NullReferenceException("DatabaseName");
         }
 
         public DateTime LocalUpdateTime { get; private set; }

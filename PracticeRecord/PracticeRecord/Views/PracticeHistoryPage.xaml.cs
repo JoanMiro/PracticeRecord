@@ -20,7 +20,7 @@ namespace PracticeRecord.Views
             base.OnAppearing();
             //this.CurrentDatePicker.MaximumDate = this.ViewModel.PeriodStartDate.AddDays(83);
             //this.CurrentDatePicker.MinimumDate = this.ViewModel.PeriodStartDate;
-            //this.CurrentDatePicker.Date = DateTime.Today.Date;
+            //this.CurrentDatePicker.Date = SystemTime.Today.Date;
             this.ViewModel.PracticeDataViewModel.RecordUpdated += this.ViewModel_RecordUpdated;
             //if (this.PeriodPicker.ItemsSource.Count > 0)
             //{
