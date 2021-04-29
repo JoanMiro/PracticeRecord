@@ -2,7 +2,6 @@
 {
     using Dropbox.Api;
     using Dropbox.Api.Files;
-    using Models;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
@@ -10,6 +9,7 @@
     using System.IO;
     using System.Linq;
     using System.Net.Http;
+    using System.Threading.Tasks;
     using Xamarin.Forms;
 
     public class DropboxAccess
@@ -117,7 +117,6 @@
             return false;
         }
 
-
         public void SaveGlassPiecesFile(List<GlassPiece> practiceItems)
         {
             var payload = JsonConvert.SerializeObject(practiceItems, Formatting.None);
@@ -131,6 +130,59 @@
             catch (Exception exception)
             {
                 Console.WriteLine(exception);
+            }
+        }
+
+        public bool WriteLogEntry(string message)
+        {
+            var logTimeStamp = DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm");
+            var logFileName = $"{DateTime.Now:yyyy-MM-dd}_log.txt";
+            try
+            {
+                var logFileEntries = this.GetLogFileEntries(logFileName);
+                logFileEntries.Add($"[{logTimeStamp}] - {message}");
+                return this.SaveLogFile(logFileName, logFileEntries).Result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+        }
+
+        private List<string> GetLogFileEntries(string logFileName)
+        {
+            try
+            {
+                using var dropboxClient = GetClient();
+                var downloadResponse = dropboxClient.Files.DownloadAsync($"/{logFileName}").Result;
+                var content = downloadResponse.GetContentAsStringAsync().Result;
+                return JsonConvert.DeserializeObject<List<string>>(content);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return new List<string> { $"LOG FILE {logFileName}" };
+            }
+
+        }
+
+        private Task<bool> SaveLogFile(string logFileName, List<string> logFileLines)
+        {
+            var payload = JsonConvert.SerializeObject(logFileLines, Formatting.Indented);
+            try
+            {
+                using var fileStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(payload));
+                using var dropboxClient = GetClient();
+                var success = dropboxClient.Files.UploadAsync($"/{logFileName}", WriteMode.Overwrite.Instance, body: fileStream).Result;
+                Debug.WriteLine(success.IsFile);
+                return Task.FromResult(true);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                return Task.FromResult(false);
             }
         }
 

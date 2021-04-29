@@ -11,6 +11,7 @@ namespace PracticeRecord.ViewModels
     using System.Text;
     using System.Windows.Input;
     using Models;
+    using Services;
     using Xamarin.Forms;
 
     public class ChordDataViewModel : BaseViewModel

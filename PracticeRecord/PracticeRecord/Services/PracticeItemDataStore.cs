@@ -20,10 +20,10 @@ namespace PracticeRecord.Services
         {
             this.databaseFilePath = databaseFilePath;
             this.OpenConnection();
-            var result = this.databaseConnection.CreateTableAsync<PracticeItem>().Result;
-            
+            _ = this.databaseConnection.CreateTableAsync<PracticeItem>().Result;
+
             //this.SeedHistory(new PieceRandomiser());
-            
+
             if (this.GetItemsAsync().Result.ToList().Count == 0)
             {
                 this.SeedHistory(new PieceRandomiser());
