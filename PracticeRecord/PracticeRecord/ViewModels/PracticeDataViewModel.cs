@@ -8,6 +8,7 @@
     using System.IO;
     using System.Linq;
     using Xamarin.Essentials;
+    using Xamarin.Forms;
 
     public class PracticeDataViewModel : BaseViewModel
     {
@@ -15,7 +16,7 @@
 
         public PracticeItemDataStore PracticeItemDataStore { get; }
 
-        private const string DatabaseName = "PracticeRecord.db3";
+        // private const string DatabaseName = "TestPracticeRecord.db3";
 
         public ObservableCollection<PracticeItem> PracticeItems { get; private set; }
 
@@ -23,14 +24,15 @@
 
         public PracticeDataViewModel()
         {
+            var databaseName = this.DefaultDatabaseName();
             var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            this.DatabasePath = Path.Combine(folderPath, DatabaseName);
+            this.DatabasePath = Path.Combine(folderPath, databaseName);
             this.dropboxAccess = new DropboxAccess(folderPath);
 
             this.PracticeItemDataStore = new PracticeItemDataStore(this.DatabasePath);
             this.RefreshPracticeItems();
         }
-        
+
         public bool IsChangedLocally { get; set; }
 
         public string DatabasePath { get; set; }
@@ -79,6 +81,16 @@
                     Console.WriteLine(e);
                 }
             }
+        }
+
+        private string DefaultDatabaseName()
+        {
+            if (Application.Current is App currentApp)
+            {
+                return currentApp.DatabaseName;
+            }
+
+            throw new NullReferenceException("DatabaseName");
         }
     }
 }

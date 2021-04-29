@@ -24,6 +24,7 @@
     <None Remove="Images\tab_about.png" />
     <None Remove="Images\TheReallyUsefulPosterCompanyChordProgressions.png" />
     <None Remove="Images\TheReallyUsefulPosterCompanyPiano.png" />
+    <None Remove="settings.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +39,7 @@
     <EmbeddedResource Include="Images\tab_about.png" />
     <EmbeddedResource Include="Images\TheReallyUsefulPosterCompanyChordProgressions.png" />
     <EmbeddedResource Include="Images\TheReallyUsefulPosterCompanyPiano.png" />
+    <EmbeddedResource Include="settings.json" />
   </ItemGroup>
 
   <ItemGroup>

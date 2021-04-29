@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace PracticeRecord.Services
 {
     using System.IO;
+    using Xamarin.Forms;
 
     public class PracticeItemDataStore : IDataStore<PracticeItem>
     {
@@ -107,8 +108,9 @@ namespace PracticeRecord.Services
                 var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                 var fileList = Directory.EnumerateFiles(folderPath);
                 var enumerable = fileList as string[] ?? fileList.ToArray();
+                var databaseName = this.DefaultDatabaseName();
                 Debug.WriteLine(enumerable.Length);
-                var fileName = enumerable.First(x => x.Contains("PracticeRecord.db3"));
+                var fileName = enumerable.First(x => x.Contains(databaseName));
                 using var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
                 using var writer = File.Create(localFilesPath);
                 var bytes = new byte[fileStream.Length];
@@ -130,6 +132,17 @@ namespace PracticeRecord.Services
         public void OpenConnection()
         {
             this.databaseConnection = new SQLiteAsyncConnection(this.databaseFilePath);
+        }
+
+        private string DefaultDatabaseName()
+        {
+            if (Application.Current is App currentApp)
+            {
+                return currentApp.DatabaseName;
+            }
+
+            throw new NullReferenceException("DatabaseName");
+
         }
     }
 }
