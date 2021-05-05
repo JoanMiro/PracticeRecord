@@ -52,11 +52,11 @@
             var assembly = Assembly.GetExecutingAssembly();
 
             var resourceName = assembly.GetManifestResourceNames()
-            .FirstOrDefault(manifestResourceName =>
-            manifestResourceName.EndsWith("settings.json", StringComparison.OrdinalIgnoreCase));
+            .FirstOrDefault(manifestResourceName => manifestResourceName
+            .EndsWith("appsettings.json", StringComparison.OrdinalIgnoreCase));
 
             using var fileStream = assembly.GetManifestResourceStream(resourceName);
-            using var streamReader = new StreamReader(fileStream ?? throw new InvalidOperationException("settings.json file resource stream not found"));
+            using var streamReader = new StreamReader(fileStream ?? throw new InvalidOperationException("appsettings.json file resource stream not found"));
 
             var jsonContent = streamReader.ReadToEnd();
             var jsonObject = JObject.Parse(jsonContent);
