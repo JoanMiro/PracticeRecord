@@ -10,21 +10,32 @@
     {
         private const string DatabaseName = "PracticeRecord.db3";
         private SettingsViewModel settingsViewModel;
+        private readonly IViewModelService viewModelService;
+        private string folderPath => Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+
+        //public App()
+        //{
+        //    this.InitializeComponent();
+
+        //    DependencyService.Register<MockDataStore>();
+        //    // this.DatabasePath = Path.Combine(this.folderPath, DatabaseName);
+        //    SettingsRepository = new SettingsRepository(this.DatabasePath);
+        //    this.ChordDataViewModel = new ChordDataViewModel { Settings = this.SettingsViewModel };
+        //    this.FinderViewModel = new FinderViewModel { Settings = this.SettingsViewModel };
+        //    this.MainPage = new AppShell();
+        //}
 
         public App()
         {
-            this.InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
-            var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            this.DatabasePath = Path.Combine(folderPath, DatabaseName);
+            this.viewModelService = (IViewModelService)Startup.Init().GetService(typeof(IViewModelService));
             SettingsRepository = new SettingsRepository(this.DatabasePath);
-            this.ChordDataViewModel = new ChordDataViewModel { Settings = this.SettingsViewModel };
-            this.FinderViewModel = new FinderViewModel { Settings = this.SettingsViewModel };
+            this.SettingsViewModel = this.viewModelService.GetSettingsViewModel(SettingsRepository);
+            this.ChordDataViewModel = this.viewModelService.GetChordDataViewModel(this.SettingsViewModel);
+            this.FinderViewModel = this.viewModelService.GetFinderViewModel(this.SettingsViewModel);
             this.MainPage = new AppShell();
         }
 
-        public string DatabasePath { get; set; }
+        public string DatabasePath => Path.Combine(this.folderPath, DatabaseName);// { get; set; }
 
         public ChordDataViewModel ChordDataViewModel { get; set; }
 
