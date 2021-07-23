@@ -23,7 +23,7 @@
         private readonly string databaseFullPath;
 
 
-        public DropboxAccess(string folderPath, string databaseName = null, string repertoireJsonName = "GlassPieces.json")
+        public DropboxAccess(string folderPath, string databaseName = null, string repertoireJsonName = "PracticePieces.json")
         {
             this.folderPath = folderPath;
             databaseName ??= this.DefaultDatabaseName();

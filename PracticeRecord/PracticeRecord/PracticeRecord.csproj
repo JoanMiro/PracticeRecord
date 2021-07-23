@@ -13,7 +13,7 @@
   <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="Data\Chords.xml" />
-    <None Remove="Data\GlassPieces.json" />
+    <None Remove="Data\PracticePieces.json" />
     <None Remove="Data\Scales.xml" />
     <None Remove="Images\CircleOfFifths_WithRelativeMinorKeys.png" />
     <None Remove="Images\key_signatures_chart.png" />
@@ -29,7 +29,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Data\Chords.xml" />
-    <EmbeddedResource Include="Data\GlassPieces.json" />
+    <EmbeddedResource Include="Data\PracticePieces.json" />
     <EmbeddedResource Include="Data\Scales.xml" />
     <EmbeddedResource Include="Images\CircleOfFifths_WithRelativeMinorKeys.png" />
     <EmbeddedResource Include="Images\key_signatures_chart.png" />
@@ -54,7 +54,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Data\GlassPieces.json" />
+    <Resource Include="Data\PracticePieces.json" />
   </ItemGroup>
 
   <ItemGroup>
