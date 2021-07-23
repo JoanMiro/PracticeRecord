@@ -12,7 +12,7 @@
     public class PieceRandomiser : List<GlassPiece>
     {
         private readonly Random random;
-        private readonly string fileName = "PracticeRecord.Data.GlassPieces.json";
+        private readonly string fileName = "PracticeRecord.Data.PracticePieces.json";
         private readonly DropboxAccess dropboxAccess;
 
         public PieceRandomiser()

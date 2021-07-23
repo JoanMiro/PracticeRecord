@@ -1,5 +1,6 @@
 ﻿namespace PracticeRecord.Services
 {
+    using System;
     using Data;
     using System.Threading.Tasks;
 
@@ -9,7 +10,8 @@
 
         public DropboxLoggerService()
         {
-            this.dropboxAccess = new DropboxAccess();
+            var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            this.dropboxAccess = new DropboxAccess(folderPath);
         }
         public enum LogLevel
         {

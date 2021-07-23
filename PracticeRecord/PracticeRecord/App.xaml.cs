@@ -4,9 +4,13 @@
     using System.IO;
     using System.Linq;
     using System.Reflection;
+
     using Newtonsoft.Json.Linq;
+
     using Services;
+
     using ViewModels;
+
     using Xamarin.Forms;
 
     public partial class App : Application
@@ -20,9 +24,10 @@
 
             DependencyService.Register<MockDataStore>();
             this.ReadSettingsFile();
+
             var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             this.DatabasePath = Path.Combine(folderPath, this.DatabaseName);
-            PeriodMaintenanceService.CheckPeriodEnd(this.DatabasePath);
+            // PeriodMaintenanceService.CheckPeriodEnd(this.DatabasePath);
             SettingsRepository = new SettingsRepository(this.DatabasePath);
             this.ChordDataViewModel = new ChordDataViewModel { Settings = this.SettingsViewModel };
             this.FinderViewModel = new FinderViewModel { Settings = this.SettingsViewModel };
@@ -61,7 +66,14 @@
             var jsonContent = streamReader.ReadToEnd();
             var jsonObject = JObject.Parse(jsonContent);
 
-            this.DatabaseName = jsonObject.Value<string>("databaseName");
+            var databaseName = jsonObject.Value<string>("databaseName");
+
+//#if DEBUG
+//            databaseName = $"Test{databaseName}";
+//#endif
+
+            this.DatabaseName = databaseName;
+
             this.PeriodLengthDays = jsonObject.Value<int>("periodLengthDays");
         }
 
@@ -89,18 +101,18 @@
             //}
         }
 
-        private BaseViewModel GetViewModel()
-        {
-            if (this.MainPage is AppShell { CurrentItem: { } } appShell && appShell.CurrentItem.Items.Count > 0)
-            {
-                var controller = appShell.CurrentItem.Items[0] as IShellSectionController;
-                if (controller?.PresentedPage?.BindingContext is BaseViewModel viewModel)
-                {
-                    return viewModel;
-                }
-            }
+        //private BaseViewModel GetViewModel()
+        //{
+        //    if (this.MainPage is AppShell { CurrentItem: { } } appShell && appShell.CurrentItem.Items.Count > 0)
+        //    {
+        //        var controller = appShell.CurrentItem.Items[0] as IShellSectionController;
+        //        if (controller?.PresentedPage?.BindingContext is BaseViewModel viewModel)
+        //        {
+        //            return viewModel;
+        //        }
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
     }
 }
