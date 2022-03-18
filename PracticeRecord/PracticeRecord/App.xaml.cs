@@ -55,10 +55,15 @@
         private void ReadSettingsFile()
         {
             var assembly = Assembly.GetExecutingAssembly();
+#if DEBUG
+            var settingsFileName = "appsettings.debug.json";
+#elif RELEASE
+            var settingsFileName = "appsettings.release.json";
+#endif
 
             var resourceName = assembly.GetManifestResourceNames()
             .FirstOrDefault(manifestResourceName => manifestResourceName
-            .EndsWith("appsettings.json", StringComparison.OrdinalIgnoreCase));
+            .EndsWith(settingsFileName, StringComparison.OrdinalIgnoreCase));
 
             using var fileStream = assembly.GetManifestResourceStream(resourceName);
             using var streamReader = new StreamReader(fileStream ?? throw new InvalidOperationException("appsettings.json file resource stream not found"));
@@ -67,10 +72,6 @@
             var jsonObject = JObject.Parse(jsonContent);
 
             var databaseName = jsonObject.Value<string>("databaseName");
-
-//#if DEBUG
-//            databaseName = $"Test{databaseName}";
-//#endif
 
             this.DatabaseName = databaseName;
 

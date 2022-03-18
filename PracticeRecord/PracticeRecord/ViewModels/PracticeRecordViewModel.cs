@@ -4,8 +4,11 @@
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Threading.Tasks;
+
     using Models;
+
     using Services;
+
     using Xamarin.Forms;
 
     public class PracticeRecordViewModel : BaseViewModel
@@ -24,7 +27,9 @@
 
             _ = this.CheckForNewPeriod();
             this.PeriodStartDate = this.CurrentPeriodRecord.CycleStartDate;
-            this.RefreshDoneCollection();
+
+            // this.RefreshDoneCollection();
+            this.RefreshDoneFlagCollection();
 
             // this.DoneSwitchToggledCommand = new Command(this.DoneSwitchToggled);
             this.CheckState();
@@ -49,6 +54,8 @@
         public PracticeItem CurrentPeriodRecord => this.PracticeDataViewModel.PracticeItems.OrderByDescending(i => i.CycleStartDate).First();
 
         public PracticeDataViewModel PracticeDataViewModel => Application.Current.MainPage.BindingContext as PracticeDataViewModel;
+        
+        public SettingsViewModel SettingsViewModel => (Application.Current as App)?.SettingsViewModel;
 
         public DateTime PeriodStartDate
         {
@@ -68,22 +75,35 @@
 
         public int WeekOffset => this.DaysOffSet / 7;
 
-        public ObservableCollection<Color> DoneCollection { get; } = new ObservableCollection<Color>();
+        //public ObservableCollection<Color> DoneCollection { get; } = new();
 
-        public bool DayIsDone => this.DoneCollection[this.DaysOffSet] == this.Done;
+        public ObservableCollection<bool> DoneFlagCollection { get; } = new();
+
+        // public bool DayIsDone => this.DoneCollection[this.DaysOffSet] == this.Done;
+        public bool DayIsDone => this.DoneFlagCollection[this.DaysOffSet];
 
         public string WeeklyPracticePiece => this.CurrentPeriodRecord.SerializedPracticeSchedule.Split(',')[this.WeekOffset % 12];
 
         public ImageSource InfoImage => ImageSource.FromResource("PracticeRecord.Images.tab_about.png");
 
-        private void RefreshDoneCollection()
+        //private void RefreshDoneCollection()
+        //{
+        //    this.DoneCollection.Clear();
+        //    for (var colorIndex = 0; colorIndex < PeriodLengthDays; colorIndex++)
+        //    {
+        //        this.DoneCollection.Add(this.CurrentPeriodRecord.SerializedRecord[colorIndex] == '1'
+        //        //? this.Done
+        //        ? this.SettingsViewModel.DoneColour
+        //        : this.NotDone);
+        //    }
+        //}
+
+        private void RefreshDoneFlagCollection()
         {
-            this.DoneCollection.Clear();
+            this.DoneFlagCollection.Clear();
             for (var colorIndex = 0; colorIndex < PeriodLengthDays; colorIndex++)
             {
-                this.DoneCollection.Add(this.CurrentPeriodRecord.SerializedRecord[colorIndex] == '1'
-                ? this.Done
-                : this.NotDone);
+                this.DoneFlagCollection.Add(this.CurrentPeriodRecord.SerializedRecord[colorIndex] == '1');
             }
         }
 
@@ -91,7 +111,8 @@
         {
             this.CurrentDate = DateTime.Today.Date;
             this.PracticeDataViewModel.RefreshState();
-            this.RefreshDoneCollection();
+            //this.RefreshDoneCollection();
+            this.RefreshDoneFlagCollection();
             this.PracticeDataViewModel.OnRecordUpdated();
         }
 
@@ -121,9 +142,14 @@
 
         private void UpdateDoneDatabaseRecord()
         {
-            this.CurrentPeriodRecord.SerializedRecord = new string(this.DoneCollection.Select(color => color == this.NotDone
-            ? '0'
-            : '1')
+            //this.CurrentPeriodRecord.SerializedRecord = new string(this.DoneCollection.Select(color => color == this.NotDone
+            //? '0'
+            //: '1')
+            //.ToArray());
+            
+            this.CurrentPeriodRecord.SerializedRecord = new string(this.DoneFlagCollection.Select(flag => flag
+            ? '1'
+            : '0')
             .ToArray());
 
             var success = this.PracticeDataViewModel.PracticeItemDataStore.UpdateItemAsync(this.CurrentPeriodRecord).Result;
@@ -131,10 +157,13 @@
 
         public void ToggleDay(int index)
         {
-            var toggled = this.DoneCollection[index] == this.NotDone;
-            this.DoneCollection[index] = toggled
-            ? this.Done
-            : this.NotDone;
+            //var toggled = this.DoneCollection[index] == this.NotDone;
+            //this.DoneCollection[index] = toggled
+            //? this.Done
+            //: this.NotDone;
+
+            var toggled = this.DoneFlagCollection[index] == false;
+            this.DoneFlagCollection[index] = toggled;
 
             this.UpdateDoneDatabaseRecord();
             this.PracticeDataViewModel.OnRecordUpdated();

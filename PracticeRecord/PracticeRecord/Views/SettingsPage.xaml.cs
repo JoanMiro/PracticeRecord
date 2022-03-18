@@ -27,6 +27,7 @@ namespace PracticeRecord.Views
             this.WhiteFinderColourPicker.Color = this.CurrentApp.SettingsViewModel.WhiteKeySelectedFinderColour;
             this.AudioIsEnabledSwitch.IsToggled = this.CurrentApp.SettingsViewModel.AudioIsEnabled;
             this.ArpeggiateIsEnabledSwitch.IsToggled = this.CurrentApp.SettingsViewModel.ArpeggiateIsEnabled;
+            this.DoneColourPicker.Color = this.CurrentApp.SettingsViewModel.DoneColour;
 
             this.BlackChordColourPicker.PropertyChanged += this.BlackChordColourPickerPropertyChanged;
             this.WhiteChordColourPicker.PropertyChanged += this.WhiteChordColourPickerPropertyChanged;
@@ -36,6 +37,7 @@ namespace PracticeRecord.Views
             this.WhiteFinderColourPicker.PropertyChanged += this.WhiteFinderColourPickerPropertyChanged;
             this.AudioIsEnabledSwitch.PropertyChanged += this.AudioIsEnabledSwitchPropertyChanged;
             this.ArpeggiateIsEnabledSwitch.PropertyChanged += this.ArpeggiateIsEnabledSwitchPropertyChanged;
+            this.DoneColourPicker.PropertyChanged += this.DoneColourPickerPropertyChanged;
         }
 
         private void ArpeggiateIsEnabledSwitchPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -78,6 +80,12 @@ namespace PracticeRecord.Views
             this.CurrentApp.SettingsViewModel.BlackKeySelectedChordColour = this.BlackChordColourPicker.Color;
         }
 
+        private void DoneColourPickerPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            this.CurrentApp.SettingsViewModel.DoneColour = this.DoneColourPicker.Color;
+        }
+        
+
         public App CurrentApp => Application.Current as App;
 
         protected override void OnDisappearing()
@@ -118,6 +126,7 @@ namespace PracticeRecord.Views
             settingsToSave.WhiteKeySelectedScaleColour = this.CurrentApp.SettingsViewModel.WhiteKeySelectedScaleColour.ToString();
             settingsToSave.BlackKeySelectedFinderColour = this.CurrentApp.SettingsViewModel.BlackKeySelectedFinderColour.ToString();
             settingsToSave.WhiteKeySelectedFinderColour = this.CurrentApp.SettingsViewModel.WhiteKeySelectedFinderColour.ToString();
+            settingsToSave.DoneColour = this.CurrentApp.SettingsViewModel.DoneColour.ToString();
 
             if (update)
             {
