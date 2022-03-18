@@ -20,6 +20,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Label x:Name="PageTitle" Grid.Row="0"
@@ -30,42 +31,48 @@
                    HorizontalOptions="StartAndExpand" Text="Colours"
                    TextColor="DarkGray" />
             <StackLayout Grid.Row="2" Margin="0,0,10,2">
-                <Label Text="Chord Black Key" VerticalOptions="Center" />
-                <colorPicker:ColorPickerEntry x:Name="BlackChordColourPicker" DialogSettings="{StaticResource ColorDialogSettings}"
-                                           Color="{Binding BlackKeySelectedChordColour}"
-                                           VerticalOptions="Center" />
+                <Label Text="Done square" VerticalOptions="Center" />
+                <colorPicker:ColorPickerEntry x:Name="DoneColourPicker" DialogSettings="{StaticResource ColorDialogSettings}"
+                                              Color="{Binding DoneColour}"
+                                              VerticalOptions="Center" />
             </StackLayout>
             <StackLayout Grid.Row="3" Margin="0,0,10,2">
+                <Label Text="Chord Black Key" VerticalOptions="Center" />
+                <colorPicker:ColorPickerEntry x:Name="BlackChordColourPicker" DialogSettings="{StaticResource ColorDialogSettings}"
+                                              Color="{Binding BlackKeySelectedChordColour}"
+                                              VerticalOptions="Center" />
+            </StackLayout>
+            <StackLayout Grid.Row="4" Margin="0,0,10,2">
                 <Label Text="Chord White Key" VerticalOptions="Center" />
                 <colorPicker:ColorPickerEntry x:Name="WhiteChordColourPicker" DialogSettings="{StaticResource ColorDialogSettings}"
                                            Color="{Binding WhiteKeySelectedChordColour}"
                                            VerticalOptions="Center" />
             </StackLayout>
-            <StackLayout Grid.Row="4" Margin="0,0,10,2">
+            <StackLayout Grid.Row="5" Margin="0,0,10,2">
                 <Label Text="Scale Black Key" VerticalOptions="Center" />
                 <colorPicker:ColorPickerEntry x:Name="BlackScaleColourPicker" DialogSettings="{StaticResource ColorDialogSettings}"
                                            Color="{Binding BlackKeySelectedScaleColour}"
                                            VerticalOptions="Center" />
             </StackLayout>
-            <StackLayout Grid.Row="5" Margin="0,0,10,2">
+            <StackLayout Grid.Row="6" Margin="0,0,10,2">
                 <Label Text="Scale White Key" VerticalOptions="Center" />
                 <colorPicker:ColorPickerEntry x:Name="WhiteScaleColourPicker" DialogSettings="{StaticResource ColorDialogSettings}"
                                            Color="{Binding WhiteKeySelectedScaleColour}"
                                            VerticalOptions="Center" />
             </StackLayout>
-            <StackLayout Grid.Row="6" Margin="0,0,10,2">
+            <StackLayout Grid.Row="7" Margin="0,0,10,2">
                 <Label Text="Finder Black Key" VerticalOptions="Center" />
                 <colorPicker:ColorPickerEntry x:Name="BlackFinderColourPicker" DialogSettings="{StaticResource ColorDialogSettings}"
                                            Color="{Binding BlackKeySelectedFinderColour}"
                                            VerticalOptions="Center" />
             </StackLayout>
-            <StackLayout Grid.Row="7" Margin="0,0,10,2">
+            <StackLayout Grid.Row="8" Margin="0,0,10,2">
                 <Label Text="Finder White Key" VerticalOptions="Center" />
                 <colorPicker:ColorPickerEntry x:Name="WhiteFinderColourPicker" DialogSettings="{StaticResource ColorDialogSettings}"
                                            Color="{Binding WhiteKeySelectedFinderColour}"
                                            VerticalOptions="Center" />
             </StackLayout>
-            <StackLayout Grid.Row="8">
+            <StackLayout Grid.Row="9">
                 <Label Margin="0,2" FontAttributes="Bold"
                        FontSize="16" HorizontalOptions="StartAndExpand"
                        Text="Sound" TextColor="DarkGray" />

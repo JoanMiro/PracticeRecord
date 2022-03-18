@@ -19,6 +19,7 @@ namespace PracticeRecord.Models
             this.WhiteKeySelectedChordColour = "Pink";
             this.WhiteKeySelectedFinderColour = "LightGreen";
             this.WhiteKeySelectedScaleColour = "LightBlue";
+            this.DoneColour = "PaleGoldenrod";
         }
 
         [PrimaryKey]
@@ -40,10 +41,13 @@ namespace PracticeRecord.Models
 
         public string WhiteKeySelectedChordColour { get; set; }
 
+        public string DoneColour { get; set; }
+        
         public bool IsValid =>
             this.BlackKeySelectedChordColour != null
             && this.BlackKeySelectedScaleColour != null
             && this.WhiteKeySelectedChordColour != null
-            && this.WhiteKeySelectedScaleColour != null;
+            && this.WhiteKeySelectedScaleColour != null
+            && this.DoneColour != null;
     }
 }

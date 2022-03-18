@@ -27,6 +27,8 @@ namespace PracticeRecord.ViewModels
 
         private Color blackKeySelectedScaleColour = Color.DarkGreen;
 
+        private Color doneColour = Color.FromHex("#BB0000FF");
+
         private Color whiteKeyColour = Color.FromRgb(byte.MaxValue, byte.MaxValue, 240);
 
         private Color whiteKeySelectedChordColour = Color.LightSalmon;
@@ -141,6 +143,16 @@ namespace PracticeRecord.ViewModels
             }
         }
 
+        public Color DoneColour
+        {
+            get => this.doneColour;
+            set
+            {
+                this.doneColour = value;
+                this.OnPropertyChanged();
+            }
+        }
+
         private async void RetrieveSettingsProperties()
         {
             var settings = await this.settingsRepository.GetSettings();
@@ -152,6 +164,7 @@ namespace PracticeRecord.ViewModels
             this.whiteKeySelectedScaleColour = settings.WhiteKeySelectedScaleColour.ToColour();
             this.arpeggiateIsEnabled = settings.ArpeggiateChord;
             this.audioIsEnabled = settings.PlaySelection;
+            this.doneColour = settings.DoneColour.ToColour();
         }
 
         public void SetColourFromName(string propertyName, string colourName)
