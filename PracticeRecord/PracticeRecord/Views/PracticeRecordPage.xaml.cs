@@ -30,6 +30,7 @@ namespace PracticeRecord.Views
             this.CurrentDatePicker.MinimumDate = this.ViewModel.PeriodStartDate;
             this.CurrentDatePicker.Date = DateTime.Today.Date;
             this.HighlightWeekLabels();
+            this.RefreshBoxViewState();
         }
 
         private void ViewModel_RecordUpdated(object sender, EventArgs e)
@@ -52,7 +53,10 @@ namespace PracticeRecord.Views
             {
                 for (var boxViewIndex = 0; boxViewIndex < this.boxViews.Count; boxViewIndex++)
                 {
-                    this.boxViews[boxViewIndex].Color = this.ViewModel.DoneCollection[boxViewIndex];
+                    // this.boxViews[boxViewIndex].Color = this.ViewModel.DoneCollection[boxViewIndex];
+                    this.boxViews[boxViewIndex].Color = this.ViewModel.DoneFlagCollection[boxViewIndex]
+                    ? this.ViewModel.SettingsViewModel.DoneColour
+                    : this.ViewModel.NotDone;
                 }
             }
         }
